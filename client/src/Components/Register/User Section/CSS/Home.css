@@ -1,0 +1,82 @@
+root
+{
+    background-color:rgb(195, 195, 230);
+}
+.HomeContainer {
+    margin-top: 10px;
+    padding: 0;
+    /* background-color: #9BBEbA; */
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    Width: 79%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(195, 195, 230);
+}
+  
+/* Control the left side */
+.LeftSide {
+    /* background-color: blue; */
+    height: 100%;
+    width: 50%;
+    margin-right: -4px;
+ 
+}
+  
+/* Control the right side */
+.RightSide {
+    height: 100%;
+    width: 100%;
+    margin-bottom: -30px;
+}
+  
+.logo_img{
+    height: 520px;
+    Width: 100%;
+    border-radius: 20px;
+}
+
+.logo_img2{
+    height: 250px;
+    width: 250px;
+    justify-self: center;
+    border-radius: 20px;
+}
+
+.btnContainer{
+    display: grid;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.h1_letsGetStarted{
+    justify-self: center;
+    font-size: 45px;
+    color: rgb(31, 153, 106);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 200px;
+}
+
+.addFile_btn{
+    height: 43px;
+    width: 30%;
+    position: fixed;
+    top: 550px;
+    left: 890px;
+    border-style: none;
+    background-color: #9BBEbA;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.addFile_btn:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,27 @@
+.DashboardContainer{
+    margin-top: 10px;
+    padding: 0;
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    right: -60px;
+    Width: 79%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(195, 195, 230);
+}
+
+.filetittle{
+    margin-right: 20px;
+    
+
+}
+.uploadButton{
+    background-color:rgb(4, 4, 39);
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 20px;
+
+}
