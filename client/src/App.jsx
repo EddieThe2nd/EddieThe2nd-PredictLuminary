@@ -1,11 +1,14 @@
 // src/App.jsx
+
 import './App.css';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import UserPage from './Components/Register/User Section/UserPage'; // Adjust the path as necessary
 import RegisterCompany from './Components/Dashboard/Components/SideBar Pages/RegisterCompany';
-import RegisteredCompanies from './Components/Dashboard/Components/SideBar Pages/RegisteredCompanies'; // Adjust the path as necessary
+import RegisteredCompanies from './Components/Dashboard/Components/SideBar Pages/RegisteredCompanies';
+import TransactionsPage from './Components/Dashboard/Components/SideBar Pages/TransactionsPages'; // Adjust the import path
+import ForgotPasswordProcess from './Components/ForgotPassword/ForgotPasswordProcess'; // Adjust the path as necessary
 
 // Import React Router DOM
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -30,13 +33,21 @@ const router = createBrowserRouter([
     element: <UserPage />
   },
   {
-    path: '/register-company', // Add the new route
+    path: '/register-company',
     element: <RegisterCompany />
   },
   {
-    path: '/registered-companies', // Add the new route
+    path: '/registered-companies',
     element: <RegisteredCompanies />
+  },
+  {
+    path: '/transactions',
+    element: <TransactionsPage />
   }
+  // {
+  //   path: '/forgot-password',
+  //   element: <ForgotPasswordProcess /> // Route for forgot password feature
+  // }
 ]);
 
 function App() {

@@ -4,11 +4,11 @@ import '../../App.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 
-// Import our assets
+// Import assets
 import video from '../../../src/LoginAssets/future.mp4';
 import logo from '../../../src/LoginAssets/thinkBot.gif';
 
-// Imported Icons
+// Import Icons
 import { FaUserShield } from "react-icons/fa";
 import { BsFillShieldLockFill } from "react-icons/bs";
 import { AiOutlineSwapRight } from "react-icons/ai";
@@ -51,7 +51,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('There was an error logging in!', error);
-      console.log('Error details:', error.response);
+      console.log('Error details:', error.response ? error.response.data : error.message);
       setLoginStatus('Network error, please try again later.');
       setTimeout(() => navigateTo('/'), 4000); // Navigate to the same page after showing the message
     }
@@ -66,7 +66,7 @@ const Login = () => {
     }
   }, [loginStatus]);
 
-  // Let's clear the form on submission
+  // Clear the form on submission
   const onSubmit = () => {
     setLoginIdentifier('');
     setLoginPassword('');
@@ -94,7 +94,7 @@ const Login = () => {
             <h3>Welcome Back!</h3>
           </div>
 
-          <form action="" className='form grid' onSubmit={onSubmit}>
+          <form className='form grid' onSubmit={loginUser}>
             <span className={statusHolder}>{loginStatus}</span> 
             <div className="inputDiv">
               <label htmlFor="identifier">Username/Entity Number</label>
@@ -110,13 +110,13 @@ const Login = () => {
                 <input type="password" id='password' placeholder='Enter Password' value={loginPassword} onChange={(event) => { setLoginPassword(event.target.value) }} />
               </div>
             </div>
-            <button type='submit' className='btn flex' onClick={loginUser}>
+            <button type='submit' className='btn flex'>
               <span>Login</span>
               <AiOutlineSwapRight className='icon' />
             </button>
             
             <span className='forgotPassword'>
-              Forgot your password? <a href="">Click Here</a>
+              Forgot your password? <Link to="/forgot-password">Click Here</Link> {/* Correct route for forgot password */}
             </span>
           </form>
         </div>

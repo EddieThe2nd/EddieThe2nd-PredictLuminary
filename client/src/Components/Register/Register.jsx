@@ -12,9 +12,11 @@ import logo from '../../../src/LoginAssets/thinkBot.gif';
 import { FaUserShield } from "react-icons/fa";
 import { BsFillShieldLockFill } from "react-icons/bs";
 import { AiOutlineSwapRight } from "react-icons/ai";
+import { HiMail } from "react-icons/hi"; // Add icon for email
 
 const Register = () => {
   const [entityNumber, setEntityNumber] = useState('');
+  const [email, setEmail] = useState(''); // Add state for email
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigateTo = useNavigate(); // Initialize useNavigate
@@ -23,7 +25,7 @@ const Register = () => {
     e.preventDefault(); // Prevent default form submission
 
     // Validate fields
-    if (!entityNumber || !password) {
+    if (!entityNumber || !email || !password) {
       setErrorMessage('Please fill in all fields.');
       return;
     }
@@ -31,24 +33,28 @@ const Register = () => {
     // Clear error message if validation passes
     setErrorMessage('');
 
-    // Axios call to create user
-    Axios.post('http://localhost:3002/register', {
-      entityNumber,
-      password
-    }).then((response) => {
+    try {
+      // Axios call to create user
+      const response = await Axios.post('http://localhost:3002/register', {
+        entityNumber,
+        email, // Include email in the POST request
+        password
+      });
+
       if (response.data.success) {
         console.log('User registered successfully');
         navigateTo('/'); // Redirect to login page upon successful registration
         setEntityNumber('');
+        setEmail(''); // Clear email field
         setPassword('');
       } else {
         console.log('Error registering user:', response.data.message);
         setErrorMessage(response.data.message || 'Error creating user. Please try again.');
       }
-    }).catch((error) => {
+    } catch (error) {
       console.error('There was an error creating the user!', error);
       setErrorMessage('Error creating user. Please try again.');
-    });
+    }
   };
 
   return (
@@ -74,7 +80,7 @@ const Register = () => {
             <h3>Let Us Know You</h3>
           </div>
 
-          <form action="" className='form grid' onSubmit={createUser}>
+          <form className='form grid' onSubmit={createUser}>
             {errorMessage && <span className='error'>{errorMessage}</span>}
 
             <div className="inputDiv">
@@ -87,6 +93,20 @@ const Register = () => {
                   placeholder='Enter Entity Number'
                   onChange={(event) => setEntityNumber(event.target.value)}
                   value={entityNumber}
+                />
+              </div>
+            </div>
+
+            <div className="inputDiv">
+              <label htmlFor="email">Email</label>
+              <div className="input flex">
+                <HiMail className='icon' /> {/* Email icon */}
+                <input
+                  type="email"
+                  id='email'
+                  placeholder='Enter Email'
+                  onChange={(event) => setEmail(event.target.value)}
+                  value={email}
                 />
               </div>
             </div>

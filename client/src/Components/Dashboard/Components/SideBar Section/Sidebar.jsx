@@ -63,7 +63,7 @@ const Sidebar = () => {
         <h3 className="divTitle">SETTINGS</h3>
         <ul className="menuLists grid">
           <li className="listItem">
-            <a href='#' className='menuLink flex'>
+          <a href='#' className='menuLink flex' onClick={() => navigate('/transactions')}>
               <AiOutlinePieChart className='icon' />
               <span className="smallText">Charts</span>
             </a>
