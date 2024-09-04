@@ -18,6 +18,7 @@ const Register = () => {
   const [entityNumber, setEntityNumber] = useState('');
   const [email, setEmail] = useState(''); // Add state for email
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); // State for confirm password
   const [errorMessage, setErrorMessage] = useState('');
   const navigateTo = useNavigate(); // Initialize useNavigate
 
@@ -25,8 +26,20 @@ const Register = () => {
     e.preventDefault(); // Prevent default form submission
 
     // Validate fields
-    if (!entityNumber || !email || !password) {
+    if (!entityNumber || !email || !password || !confirmPassword) {
       setErrorMessage('Please fill in all fields.');
+      return;
+    }
+
+    // Password validation: at least 8 characters, with both lowercase and uppercase letters
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!passwordPattern.test(password)) {
+      setErrorMessage('Password must be at least 8 characters long and include both lowercase and uppercase letters.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match.');
       return;
     }
 
@@ -47,6 +60,7 @@ const Register = () => {
         setEntityNumber('');
         setEmail(''); // Clear email field
         setPassword('');
+        setConfirmPassword(''); // Clear confirm password field
       } else {
         console.log('Error registering user:', response.data.message);
         setErrorMessage(response.data.message || 'Error creating user. Please try again.');
@@ -76,7 +90,7 @@ const Register = () => {
 
         <div className="formDiv flex">
           <div className="headerDiv">
-            <img src={logo} alt="Logo Image" style={{ width: '100px', height: '100px' }} />
+            {/* <img src={logo} alt="Logo Image"  /> */}
             <h3>Let Us Know You</h3>
           </div>
 
@@ -121,6 +135,20 @@ const Register = () => {
                   placeholder='Enter Password'
                   onChange={(event) => setPassword(event.target.value)}
                   value={password}
+                />
+              </div>
+            </div>
+
+            <div className="inputDiv">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <div className="input flex">
+                <BsFillShieldLockFill className='icon' />
+                <input
+                  type="password"
+                  id='confirmPassword'
+                  placeholder='Confirm Password'
+                  onChange={(event) => setConfirmPassword(event.target.value)}
+                  value={confirmPassword}
                 />
               </div>
             </div>

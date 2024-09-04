@@ -127,7 +127,7 @@ app.post('/register', (req, res) => {
         } else {
             console.log('Entity number exists:', results);
 
-            const insertUserSQL = 'INSERT INTO users (entityNumber, password) VALUES (?, ?)';
+            const insertUserSQL = 'INSERT INTO users_insurance (entityNumber, password) VALUES (?, ?)';
             db.query(insertUserSQL, [entityNumber, password], (err, results) => {
                 if (err) {
                     console.error('Error inserting user:', err);
@@ -148,7 +148,7 @@ app.post('/login', (req, res) => {
     console.log('Received login data:', { entityNumber, password });
 
     // Check in admins table first
-    const adminLoginSQL = 'SELECT * FROM admins WHERE username = ?';
+    const adminLoginSQL = 'SELECT * FROM admins_insuranace WHERE username = ?';
     db.query(adminLoginSQL, [entityNumber.toLowerCase()], (err, adminResults) => {
         if (err) {
             console.error('Error during admin login:', err);
@@ -165,7 +165,7 @@ app.post('/login', (req, res) => {
         }
 
         // Check in users table
-        const userLoginSQL = 'SELECT * FROM users WHERE entityNumber = ?';
+        const userLoginSQL = 'SELECT * FROM users_insurance WHERE entityNumber = ?';
         db.query(userLoginSQL, [entityNumber.toLowerCase()], (err, userResults) => {
             if (err) {
                 console.error('Error during user login:', err);
@@ -190,7 +190,7 @@ app.post('/login', (req, res) => {
 // Endpoint to check if email exists
 app.post('/check-email', (req, res) => {
     const { email } = req.body;
-    const query = 'SELECT * FROM users WHERE email = ?';
+    const query = 'SELECT * FROM users_insurance WHERE email = ?';
     db.query(query, [email], (err, results) => {
         if (err) {
             console.error('Error checking email:', err);
@@ -199,55 +199,3 @@ app.post('/check-email', (req, res) => {
         res.send({ exists: results.length > 0 });
     });
 });
-
-// // Endpoint to send OTP
-// app.post('/send-otp', (req, res) => {
-//     const { email, otp } = req.body;
-
-//     // Configure nodemailer
-//     const transporter = nodemailer.createTransport({
-//         service: 'Gmail',
-//         auth: {
-//             user: 'your-email@gmail.com',
-//             pass: 'your-email-password'
-//         }
-//     });
-
-//     // Send OTP email
-//     const mailOptions = {
-//         from: 'your-email@gmail.com',
-//         to: email,
-//         subject: 'Your OTP Code',
-//         text: `Your OTP code is ${otp}`
-//     };
-
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             console.error('Error sending OTP email:', error);
-//             return res.status(500).send({ success: false, message: 'Error sending OTP email' });
-//         }
-//         res.send({ success: true, message: 'OTP sent successfully' });
-//     });
-// });
-
-// // Endpoint to update password
-// app.post('/update-password', (req, res) => {
-//     const { email, newPassword } = req.body;
-
-//     if (!email || !newPassword) {
-//         return res.status(400).json({ status: 0, message: 'Invalid input' });
-//     }
-
-//     const query = 'UPDATE users SET password = ? WHERE email = ?';
-//     db.query(query, [newPassword, email], (err, results) => {
-//         if (err) {
-//             console.error('Database update error:', err);
-//             return res.status(500).json({ status: 0, message: 'Error: ' + err.message });
-//         }
-//         if (results.affectedRows === 0) {
-//             return res.status(404).json({ status: 0, message: 'Failed to update record' });
-//         }
-//         res.json({ status: 1, message: 'Record has been updated' });
-//     });
-// });
- 
