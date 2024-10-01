@@ -1,5 +1,7 @@
-import React from 'react'
-import './top.css'
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+import './top.css';
 
 // Imported Icons
 import { BiSearchAlt } from "react-icons/bi";
@@ -8,13 +10,21 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { BsArrowRightShort } from "react-icons/bs";
 import { BsQuestionCircle } from "react-icons/bs";
 
+// Imported Images
+import img from '../../../Assets/user (3).jpg';
+import img2 from '../../../../../LoginAssets/thinkBot.gif';
+import video from '../../../../../LoginAssets/future.mp4';
 
-//Imported Images
-import img from '../../../Assets/user (3).jpg'
-import img2 from '../../../../../LoginAssets/thinkBot.gif'
-import video from '../../../../../LoginAssets/future.mp4'
+import GmailNotification from './GmailNotifications';
+// import GmailShow from './GmailShow';
 
 const Top = () => {
+  const navigate = useNavigate(); // Initialize navigate
+
+  function HandleClick() {
+    navigate('/gmail-notification'); // Use navigate to route
+  }
+
   return (
     <div className='topSection'>
       <div className="headerSection flex">
@@ -29,16 +39,21 @@ const Top = () => {
         </div>
 
         <div className="adminDiv flex">
-        <TbMessageCircle2 className='icon'/>
-        <IoNotificationsOutline className='icon'/>
-        <div className="adminImage">
-          <img src={img} alt="Admin Image" />
-        </div>
+          
+
+          <IoNotificationsOutline className='icon' onClick={HandleClick} style={{ cursor: 'pointer' }} />
+         
+         
+
+          
+        
+          <div className="adminImage">
+            <img src={img} alt="Admin Image" />
+          </div>
         </div>
       </div>
 
       <div className="cardSection flex">
-
         <div className="rightCard flex">
           <h1>Predict and Increase company value</h1>
           <p>The world's fast growing prediction website!</p>
@@ -55,8 +70,6 @@ const Top = () => {
 
         <div className="leftCard flex">
           <div className="main flex">
-
-
             <div className="textDiv">
               <h1>My Stat</h1>
 
@@ -73,14 +86,13 @@ const Top = () => {
               <span className="flex link">
                 Go to my Orders <BsArrowRightShort className='icon'/>
               </span>
-
             </div>
 
-          <div className="imgDiv">
-            <img src={img2} alt="Image Name" />
-          </div>
-          {/* We shall use this card later */}
-          <div className="sideBarCard">
+            <div className="imgDiv">
+              <img src={img2} alt="Image Name" />
+            </div>
+            {/* We shall use this card later */}
+            <div className="sideBarCard">
               <BsQuestionCircle className='icon'/>
               <div className="cardContent">
                 <div className="circle1"></div>
@@ -90,15 +102,12 @@ const Top = () => {
                 <p>Having trouble in Planti, please contact us for more questions</p>
                 <button className='btn'>Go to help center</button>
               </div>
-          </div>
-
+            </div>
           </div>
         </div>
-
-
       </div>
     </div>
-  )
+  );
 }
 
-export default Top
+export default Top;

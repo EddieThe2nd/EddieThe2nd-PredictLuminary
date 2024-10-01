@@ -4,9 +4,13 @@
 }
 
 .sidebar {
-  width: 250px;
+  width: 100%;
   background-color: #2C3E50;
   color: #fff;
+  position: absolute;
+  right: 1025px;
+  top: 70px;
+  height: 100%;
 }
 
 .sidebar nav ul {
@@ -42,6 +46,11 @@
   padding: 15px;
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  bottom: 500px;
+   /* 100px;left: */
+   right: 50px;
+  width: 1000px;
 }
 
 .header nav ul {

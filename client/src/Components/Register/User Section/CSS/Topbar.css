@@ -1,0 +1,33 @@
+.Topbar{
+    overflow: hidden;
+    background-color: #2f4050;
+    height: 80px;
+    margin-bottom: -16px;
+    padding: 0;
+  }
+  
+  .TopbarList{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .TopBarList .ListColumn{
+    text-decoration: none;
+  }
+  
+  .ListColumn #TopbarTitle{
+    color: white;
+    font-size: 25px;
+    position: relative;
+    left: 950px;
+    margin: 10px 0 0 20px;
+  }
+  
+.ListColumn #TopbarTitle:hover{
+    cursor: pointer;
+    background-color: #366087;
+    border-radius: 10%;
+    font-size: 30px;
+}

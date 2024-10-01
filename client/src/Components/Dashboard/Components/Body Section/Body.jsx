@@ -10,7 +10,7 @@ const Body = () => {
       <Top />
       <div className='bottom flex'>
         <Listing />
-        <Activity />
+        {/* <Activity /> */}
       </div>
     </div>
   );

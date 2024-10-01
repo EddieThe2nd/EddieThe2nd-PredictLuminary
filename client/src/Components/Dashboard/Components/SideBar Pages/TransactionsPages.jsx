@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -10,6 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
+import "../SideBar Pages/SideBar-CSS/TransactionsPages.css";
 
 // Register Chart.js components
 ChartJS.register(
@@ -24,15 +25,21 @@ ChartJS.register(
 const TransactionsPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // State for handling errors
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetchTransactionsUsingFetchFromJS();
-        setData(response); // Adjust based on actual API response structure
+        if (response) {
+          setData(response); // Adjust based on actual API response structure
+        } else {
+          setError("No data available"); // Set error if response is null
+        }
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError("Error fetching data"); // Set error in case of a fetch failure
         setLoading(false);
       }
     };
@@ -41,19 +48,27 @@ const TransactionsPage = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Transactions Overview</h2>
-      {loading ? <p>Loading...</p> : <BarChartComponentWrapper data={data} />}
+    <div className="transactions-container">
+      <h2 className="transactions-header">Transactions Overview</h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <div className="transactions-chart">
+          <BarChartComponentWrapper data={data} />
+        </div>
+      )}
     </div>
   );
 };
 
 export default TransactionsPage;
 
-const BarChartComponentWrapper = (data) => {
+const BarChartComponentWrapper = ({ data }) => {
   const aggregateDataByDate = (data) => {
-    data = JSON.parse(data.data);
-    
+    if (!data || !data.data) return { chartData: null, options: null };
+
     // Group and sum amounts by date
     const dateMap = data.data.reduce((acc, transaction) => {
       const date = new Date(transaction.createdAt).toLocaleDateString();
@@ -116,7 +131,7 @@ const BarChartComponentWrapper = (data) => {
     };
   };
 
-  if (data === null) return <div>No data to display</div>;
+  if (!data || !data.data) return <div>No data to display</div>; // Handle null or invalid data
   const { chartData, options } = aggregateDataByDate(data);
   return <Bar data={chartData} options={options} />;
 };
@@ -133,13 +148,20 @@ const fetchTransactionsUsingFetchFromJS = async () => {
       headers: headers,
     });
 
+    const contentType = response.headers.get("content-type");
+
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const data = await response.text();
-    return data;
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error("Unexpected content type: " + contentType);
+    }
   } catch (error) {
-    throw Error(error);
+    console.error("Error fetching transactions:", error);
+    return null; // Return null in case of an error
   }
 };

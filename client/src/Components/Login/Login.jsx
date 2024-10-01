@@ -1,59 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import './Login.css';
-import '../../App.css';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-
-// Import assets
+import './Login.css';
 import video from '../../../src/LoginAssets/future.mp4';
 import logo from '../../../src/LoginAssets/thinkBot.gif';
-
-// Import Icons
 import { FaUserShield } from "react-icons/fa";
 import { BsFillShieldLockFill } from "react-icons/bs";
 import { AiOutlineSwapRight } from "react-icons/ai";
+import image from '../../LoginAssets/AI.gif';
+import image1 from '../../LoginAssets/logosolidblack.png'
 
 const Login = () => {
-  const [loginIdentifier, setLoginIdentifier] = useState(''); // state for entity number or username
+  const [loginIdentifier, setLoginIdentifier] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const navigateTo = useNavigate();
-
-  // Predefined admin usernames
-  const adminUsernames = ['adminrandy', 'admineddie', 'adminthemba']; // Ensure all are lowercase
-
-  // Let us now show the message to the user
   const [loginStatus, setLoginStatus] = useState('');
   const [statusHolder, setStatusHolder] = useState('message');
+  const navigateTo = useNavigate();
 
   const loginUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios.post('http://localhost:3002/login', {
-        entityNumber: loginIdentifier.toLowerCase(), // Ensure it's lowercase
-        password: loginPassword
-      });
+        const response = await Axios.post('http://localhost:3002/login', {
+            entityNumber: loginIdentifier.toLowerCase(),
+            password: loginPassword
+        });
 
-      console.log('Server response:', response);
+        if (response.data.success) {
+            localStorage.setItem('entityNumber', response.data.entityNumber || '');
+            localStorage.setItem('subscriptionStatus', response.data.subscriptionStatus || 'inactive');
 
-      if (response.data.success) {
-        console.log('Logged in identifier:', loginIdentifier.toLowerCase());
-        if (response.data.role === 'admin') {
-          console.log('Navigating to /dashboard');
-          navigateTo('/dashboard'); // Navigate to the admin dashboard
+            if (response.data.role === 'admin') {
+                navigateTo('/dashboard');
+            } else {
+                navigateTo('/user-page');
+            }
         } else {
-          console.log('Navigating to /user-page');
-          navigateTo('/user-page'); // Navigate to the user page
+            setLoginStatus('Invalid entity number or password');
+            setTimeout(() => navigateTo('/'), 4000);
         }
-      } else {
-        console.log(response.data.message || loginIdentifier === '' || loginPassword === '');
-        setLoginStatus('Invalid entity number or password');
-        setTimeout(() => navigateTo('/'), 4000); // Navigate to the same page after showing the message
-      }
     } catch (error) {
-      console.error('There was an error logging in!', error);
-      console.log('Error details:', error.response ? error.response.data : error.message);
-      setLoginStatus('Network error, please try again later.');
-      setTimeout(() => navigateTo('/'), 4000); // Navigate to the same page after showing the message
+        setLoginStatus('Network error, please try again later.');
+        setTimeout(() => navigateTo('/'), 4000);
     }
   };
 
@@ -66,62 +53,98 @@ const Login = () => {
     }
   }, [loginStatus]);
 
-  // Clear the form on submission
-  const onSubmit = () => {
-    setLoginIdentifier('');
-    setLoginPassword('');
-  };
-
   return (
-    <div className='loginPage flex'>
-      <div className="container flex">
-        <div className="videoDiv">
-          <video src={video} autoPlay muted loop></video>
-          <div className="textDiv">
-            <h2 className='title'>Foresight AI</h2>
-            <p>Embrace the Clarity of ForeSight!</p>
-          </div>
-          <div className="footerDiv flex">
-            <span className='text'>Don't have an account?</span>
-            <Link to={'/register'}>
-              <button className='btn'>Sign Up</button>
-            </Link>
-          </div>
-        </div>
-        <div className="formDiv flex">
-          <div className="headerDiv">
-            <img src={logo} alt="Logo Image" style={{ width: '100px', height: '100px' }} />
-            <h3>Welcome Back!</h3>
-          </div>
-
-          <form className='form grid' onSubmit={loginUser}>
-            <span className={statusHolder}>{loginStatus}</span> 
-            <div className="inputDiv">
-              <label htmlFor="identifier">Username/Entity Number</label>
-              <div className="input flex">
-                <FaUserShield className='icon' />
-                <input type="text" id='identifier' placeholder='Enter Username or Entity Number' value={loginIdentifier} onChange={(event) => { setLoginIdentifier(event.target.value.toLowerCase()) }} />
-              </div>
+    <section>
+      <div className="container">
+        <div className="login-box">
+          <h2>Login</h2>
+          <form onSubmit={loginUser}>
+            <div className="input-box">
+              <input
+                type="text"
+                required
+                value={loginIdentifier}
+                onChange={(event) => setLoginIdentifier(event.target.value.toLowerCase())}
+              />
+              <label>Entity Number</label>
             </div>
-            <div className="inputDiv">
-              <label htmlFor="password">Password</label>
-              <div className="input flex">
-                <BsFillShieldLockFill className='icon' />
-                <input type="password" id='password' placeholder='Enter Password' value={loginPassword} onChange={(event) => { setLoginPassword(event.target.value) }} />
-              </div>
+            <div className="input-box">
+              <input
+                type="password"
+                required
+                value={loginPassword}
+                onChange={(event) => setLoginPassword(event.target.value)}
+              />
+              <label>Password</label>
             </div>
-            <button type='submit' className='btn flex'>
-              <span>Login</span>
+            <div className="forgot-pass">
+              <Link to="/OtpForm">Forgot your password?</Link>
+            </div>
+            <button type="submit" className="btn">
+              Login
               <AiOutlineSwapRight className='icon' />
             </button>
-            
-            <span className='forgotPassword'>
-              Forgot your password? <Link to="/forgot-password">Click Here</Link> {/* Correct route for forgot password */}
-            </span>
+            <div className="signup-link">
+              <Link to="/register">Signup</Link>
+            </div>
           </form>
         </div>
+        <span style={{ '--i': 0 }}></span>
+        <span style={{ '--i': 1 }}></span>
+        <span style={{ '--i': 2 }}></span>
+        <span style={{ '--i': 3 }}></span>
+        <span style={{ '--i': 4 }}></span>
+        <span style={{ '--i': 5 }}></span>
+        <span style={{ '--i': 6 }}></span>
+        <span style={{ '--i': 7 }}></span>
+        <span style={{ '--i': 8 }}></span>
+        <span style={{ '--i': 9 }}></span>
+        <span style={{ '--i': 10 }}></span>
+        <span style={{ '--i': 11 }}></span>
+        <span style={{ '--i': 12 }}></span>
+        <span style={{ '--i': 13 }}></span>
+        <span style={{ '--i': 14 }}></span>
+        <span style={{ '--i': 15 }}></span>
+        <span style={{ '--i': 16 }}></span>
+        <span style={{ '--i': 17 }}></span>
+        <span style={{ '--i': 18 }}></span>
+        <span style={{ '--i': 19 }}></span>
+        <span style={{ '--i': 20 }}></span>
+        <span style={{ '--i': 21 }}></span>
+        <span style={{ '--i': 22 }}></span>
+        <span style={{ '--i': 23 }}></span>
+        <span style={{ '--i': 24 }}></span>
+        <span style={{ '--i': 25 }}></span>
+        <span style={{ '--i': 26 }}></span>
+        <span style={{ '--i': 27 }}></span>
+        <span style={{ '--i': 28 }}></span>
+        <span style={{ '--i': 29 }}></span>
+        <span style={{ '--i': 30 }}></span>
+        <span style={{ '--i': 31 }}></span>
+        <span style={{ '--i': 32 }}></span>
+        <span style={{ '--i': 33 }}></span>
+        <span style={{ '--i': 34 }}></span>
+        <span style={{ '--i': 35 }}></span>
+        <span style={{ '--i': 36 }}></span>
+        <span style={{ '--i': 37 }}></span>
+        <span style={{ '--i': 38 }}></span>
+        <span style={{ '--i': 39 }}></span>
+        <span style={{ '--i': 40 }}></span>
+        <span style={{ '--i': 41 }}></span>
+        <span style={{ '--i': 42 }}></span>
+        <span style={{ '--i': 43 }}></span>
+        <span style={{ '--i': 44 }}></span>
+        <span style={{ '--i': 45 }}></span>
+        <span style={{ '--i': 46 }}></span>
+        <span style={{ '--i': 47 }}></span>
+        <span style={{ '--i': 48 }}></span>
+        <span style={{ '--i': 49 }}></span>
       </div>
-    </div>
+      <img className='smartAImage' src={image1} alt="Smart A" />
+      <svg className='wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
+        <path fill="#69b3e2" fillOpacity="1" d="M0,96L60,90.7C120,85,240,75,360,85.3C480,96,600,128,720,128C840,128,960,96,1080,69.3C1200,43,1320,21,1380,10.7L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+      </svg>
+    </section>
   );
 };
 

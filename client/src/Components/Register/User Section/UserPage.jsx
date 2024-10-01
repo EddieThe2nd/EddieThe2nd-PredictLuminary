@@ -1,11 +1,14 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import './UserPage.css'; // Create a CSS file for styling
+import './UserPage.css'; // External CSS for styling
 import React from 'react';
 
 // Import pages
 import Dashboard from './Pages/Dashboard';
 import Mail from './Pages/Mail';
 import Home from './Pages/Home'; // Adjust the path as necessary
+import Subscriptions from '../Subscriptions/Subscriptions';
+
+
 
 const UserPage = () => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -29,20 +32,24 @@ const UserPage = () => {
           </ul>
         </nav>
       </aside>
+      
       <main className="main-content">
         <header className="header">
           <nav>
             <ul>
-              <li><a href="#about">About</a></li>
+              <li><button className="logout-button" onClick={() => navigate('/user-page/about')}>About</button></li>
+              <li><button className="logout-button" onClick={() => navigate('/user-page/subscription-page')}>Subscription</button></li>
               <li><button className="logout-button" onClick={handleLogout}>Logout</button></li>
             </ul>
           </nav>
         </header>
+
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="mail" element={<Mail />} />
+            <Route path="subscription-page" element={<Subscriptions />} /> {/* Ensure the component exists */}
           </Routes>
         </div>
       </main>

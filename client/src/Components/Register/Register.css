@@ -1,1 +1,122 @@
 /*# sourceMappingURL=Register.css.map */
+/* Targeting only the register page container */
+.register-container .container {
+    display: flex;
+    background-color: #f4f4f4; /* Lighter background color for better contrast */
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    width: 80%; /* Increase container width */
+    max-width: 1200px; /* Adjust max-width */
+    margin-right: 890px;
+    margin-top: 100px;
+    padding: 400px; /* Adjust padding for more space inside */
+  }
+  
+  /* Register form styles */
+  .register-container .formDiv {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px 60px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .register-container .headerDiv {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .register-container .headerDiv h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .register-container .form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .register-container .inputDiv {
+    margin-bottom: 20px;
+  }
+  
+  .register-container .inputDiv label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .register-container .inputDiv .input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #fafafa;
+  }
+  
+  .register-container .inputDiv .input input {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .register-container .inputDiv .input input:focus {
+    outline: none;
+  }
+  
+  .register-container .inputDiv .icon {
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .register-container .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #1e90ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-container .btn:hover {
+    background-color: #1c86ee;
+  }
+  
+  .register-container .error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .register-container .forgotPassword {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .register-container .forgotPassword a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  
+  .register-container .forgotPassword a:hover {
+    text-decoration: underline;
+  }
+  

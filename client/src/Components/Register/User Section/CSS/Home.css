@@ -1,82 +1,105 @@
-root
-{
-    background-color:rgb(195, 195, 230);
-}
 .HomeContainer {
     margin-top: 10px;
     padding: 0;
     /* background-color: #9BBEbA; */
     position: absolute;
     top: 70px;
-    left: 250px;
-    Width: 79%;
+    right: 250px;
+    width: 79%;
     height: 85%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:rgb(195, 195, 230);
 }
-  
+
 /* Control the left side */
-.LeftSide {
-    /* background-color: blue; */
-    height: 100%;
-    width: 50%;
-    margin-right: -4px;
- 
+.LeftSide .logo_img{
+    background-color: #9BBEbA; 
+    height: 450px;
+    width: 400px;
+    position: absolute;
+    right: 350px;
+    top: 80px;
 }
-  
+
 /* Control the right side */
 .RightSide {
     height: 100%;
-    width: 100%;
-    margin-bottom: -30px;
-}
-  
-.logo_img{
-    height: 520px;
-    Width: 100%;
-    border-radius: 20px;
+    width: 50%;
 }
 
-.logo_img2{
+/* Logo image styles */
+.logo_img {
+    height: 520px;
+    width: 100px;
+    border-radius: 0 0 5px 0;
+}
+
+.logo_img2 {
     height: 250px;
     width: 250px;
     justify-self: center;
     border-radius: 20px;
 }
 
-.btnContainer{
-    display: grid;
+/* Button container */
+.btnContainer {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
 }
 
-.h1_letsGetStarted{
-    justify-self: center;
+/* Header text style */
+.h1_letsGetStarted {
     font-size: 45px;
-    color: rgb(31, 153, 106);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 200px;
+    margin-top: 90px; /* Added margin to separate from buttons */
+    width: 450px;
 }
 
-.addFile_btn{
+/* Add file button style */
+.addFile_btn {
     height: 43px;
-    width: 30%;
-    position: fixed;
-    top: 550px;
-    left: 890px;
+    width: 90%;
     border-style: none;
     background-color: #9BBEbA;
     border-radius: 10px;
     color: white;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px; /* Added margin to separate from payment button */
 }
 
-.addFile_btn:hover{
+/* Add file button hover effect */
+.addFile_btn:hover {
     cursor: pointer;
     background-color: black;
     color: white;
+}
+
+/* Pay button style */
+.pay_btn {
+    height: 43px;
+    width: 90%;
+    border-style: none;
+    background-color: #4CAF50; /* Green color for the pay button */
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Pay button hover effect */
+.pay_btn:hover {
+    cursor: pointer;
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Disabled button style */
+.pay_btn:disabled {
+    background-color: #cccccc; /* Grey color for disabled state */
+    cursor: not-allowed;
 }
