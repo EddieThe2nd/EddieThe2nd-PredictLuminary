@@ -1,5 +1,4 @@
 // src/App.jsx
-
 import './App.css';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
@@ -8,11 +7,13 @@ import UserPage from './Components/Register/User Section/UserPage'; // Adjust th
 import RegisterCompany from './Components/Dashboard/Components/SideBar Pages/RegisterCompany';
 import RegisteredCompanies from './Components/Dashboard/Components/SideBar Pages/RegisteredCompanies';
 import TransactionsPage from './Components/Dashboard/Components/SideBar Pages/TransactionsPages'; // Adjust the import path
-import ForgotPasswordProcess from './Components/ForgotPassword/ForgotPasswordProcess'; // Adjust the path as necessary
-
-// Import React Router DOM
+import CustomersPage from './Components/Dashboard/Components/SideBar Pages/CustomersPage';
+import GmailNotification from './Components/Dashboard/Components/Body Section/Top Section/GmailNotifications';
+import Activity from './Components/Dashboard/Components/Body Section/Activity Section/Activity';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { FileProvider } from './Components/Register/User Section/Functions/FileContext'; // Adjust the path as necessary
+import OtpForm from './Components/ForgotPassword/OtpForm';
+import ResetPassword from './Components/ForgotPassword/ResetPassword';
 
 // Create the router
 const router = createBrowserRouter([
@@ -43,11 +44,29 @@ const router = createBrowserRouter([
   {
     path: '/transactions',
     element: <TransactionsPage />
-  }
-  // {
-  //   path: '/forgot-password',
-  //   element: <ForgotPasswordProcess /> // Route for forgot password feature
-  // }
+  },
+  {
+    path: '/customer',
+    element: <CustomersPage />
+  },
+  {
+    path: '/gmail-notification',
+    element: <GmailNotification />
+  },
+  {
+    path: '/recent-login-activity',
+    element: <Activity />
+  },
+  {
+    path: '/OtpForm',
+    element: <OtpForm />
+  },
+  {
+    path: '/ResetPassword',
+    element: <ResetPassword />
+  },
+  
+ 
 ]);
 
 function App() {

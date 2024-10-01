@@ -1,0 +1,45 @@
+/* Style for the entire page background */
+body {
+    /* background: url('../trends.jpg') no-repeat center center fixed; */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Existing styles for the Transactions Page */
+  .transactions-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Adds a transparent white background to make the content readable */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100vw;
+    height: 100vh;
+    margin: 20px auto;
+  }
+  
+  .transactions-header {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .transactions-chart {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .transactions-container p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+  }
+  
+  .transactions-container p.error {
+    color: red;
+  }
+  

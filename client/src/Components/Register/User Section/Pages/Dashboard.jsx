@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 import React, { useContext, useState, useEffect } from 'react';
+=======
+import React, { useContext, useState } from 'react';
+>>>>>>> themba-ai-section
 import { FileContext } from '../Functions/FileContext'; // Ensure correct import path
 import axios from 'axios';
 import '../CSS/Dashboard.css';
 import Papa from 'papaparse';
 
 function Dashboard() {
+<<<<<<< HEAD
     const { file } = useContext(FileContext); // File recieved from Home.JSX
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -43,6 +48,24 @@ function Dashboard() {
         const formData = new FormData();
         formData.append('file', fileToUpload);
 
+=======
+    const { file } = useContext(FileContext); // File received from Home.JSX
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [top50Data, setTop50Data] = useState([]);
+
+    const handleFileUpload = async () => {
+        const fileToUpload = retrieveFileFromLocalStorage();
+        if (!fileToUpload) {
+            console.error('No file found in local storage');
+            return;
+        }
+
+        // Create a FormData object to send the file
+        const formData = new FormData();
+        formData.append('file', fileToUpload);
+
+>>>>>>> themba-ai-section
         try {
             setLoading(true);
             setError('');
@@ -104,6 +127,7 @@ function Dashboard() {
         }
     };
 
+<<<<<<< HEAD
     const storeFileInLocalStorage = (file) => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -111,6 +135,15 @@ function Dashboard() {
         };
         reader.readAsDataURL(file);
     };
+=======
+    // const storeFileInLocalStorage = (file) => {
+    //     const reader = new FileReader();
+    //     reader.onloadend = () => {
+    //         localStorage.setItem('file', reader.result);
+    //     };
+    //     reader.readAsDataURL(file);
+    // };
+>>>>>>> themba-ai-section
 
     const retrieveFileFromLocalStorage = () => {
         const fileData = localStorage.getItem('file');
@@ -127,6 +160,7 @@ function Dashboard() {
         return null;
     };
 
+<<<<<<< HEAD
     const redirectToPaystack = () => {
         storeFileInLocalStorage(file);
 
@@ -156,12 +190,15 @@ function Dashboard() {
         }
     };
 
+=======
+>>>>>>> themba-ai-section
     return (
         <div className="DashboardContainer">
             {!file && (<h1 className="BaseH1">Return to homepage and add a file</h1>)}
             {file && (
                 <div>
                     <p>Selected File: {file.name}</p>
+<<<<<<< HEAD
                     <input
                         type="email"
                         placeholder="Enter your email"
@@ -173,6 +210,9 @@ function Dashboard() {
                         Payment First
                     </button>
                     <button onClick={handleFileUpload} disabled={!paymentSuccess || loading}>
+=======
+                    <button onClick={handleFileUpload} disabled={loading}>
+>>>>>>> themba-ai-section
                         {loading ? 'Processing...' : 'Download file'}
                     </button>
                 </div>

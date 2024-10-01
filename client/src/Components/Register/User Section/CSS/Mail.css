@@ -3,14 +3,15 @@
     padding: 20px;
     background-color: #f0f0f0;
     position: absolute;
-    bottom: 42%;
-    left: 60%;
+    bottom: 220px;
+    right: 60%;
     transform: translate(-50%, 50%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 300px;
     box-sizing: border-box;
     text-align: center;
+
 }
 
 .MailContainer h2 {

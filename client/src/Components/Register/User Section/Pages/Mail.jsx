@@ -7,9 +7,10 @@ function Mail() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  let service_id = "service_w02brkp";
-  let template_id = "template_e0twm1j";
-  let api_key = "Q0RIB2kH9M7QkCk54";
+  // Your EmailJS service ID, template ID, and public API key
+  const service_id = "service_w02brkp";
+  const template_id = "template_e0twm1j";
+  const api_key = "Q0RIB2kH9M7QkCk54";
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -28,7 +29,7 @@ function Mail() {
         console.log(result.text);
         setError(''); // Clear error if the email is sent successfully
         setSuccess(true);
-        setTimeout(() => setSuccess(false), 3000); // Reset success after 3 seconds
+        setTimeout(() => setSuccess(false), 3000); // Reset success message after 3 seconds
         form.current.reset();
       }, (error) => {
         console.log(error.text);
@@ -45,11 +46,11 @@ function Mail() {
       {success && <p className="success">Email sent successfully!</p>}
       <form ref={form} onSubmit={sendEmail}>
         <label>Username</label>
-        <input type="text" name="user_name" />
+        <input type="text" name="user_name" required />
         <label>Enter your email</label>
-        <input type="email" name="user_email" />
+        <input type="email" name="user_email" required />
         <label>Message</label>
-        <textarea name="message" />
+        <textarea name="message" required />
         <input type="submit" value="Send" />
       </form>
     </div>

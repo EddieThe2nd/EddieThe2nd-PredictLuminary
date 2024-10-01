@@ -2,9 +2,15 @@
     margin-top: 10px;
     padding: 20px; /* Added padding for inner content */
     position: absolute;
+<<<<<<< HEAD
     top: 70px;
     left: 250px;
     width: 75%;
+=======
+    top: 155px;
+    right: 250px;
+    width: 750px;
+>>>>>>> themba-ai-section
     height: 80%;
     display: flex;
     flex-direction: column; /* Ensure content stacks vertically */
@@ -129,4 +135,8 @@ pre {
     border-radius: 4px;
     overflow-x: auto;
     white-space: pre-wrap; /* Preserve formatting */
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> themba-ai-section

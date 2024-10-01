@@ -1,84 +1,62 @@
-import React from 'react'
-import './activity.css'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../Activity Section/activity.css'
 
-//Imported Icons
-import { BsArrowRightShort } from "react-icons/bs";
+const Activity = ({ entityNumber }) => {
+  const [loginActivity, setLoginActivity] = useState([]);
 
-//Imported Images
-import user from '../../../Assets/user (1).jpg'
-import user1 from '../../../Assets/user (2).jpg'
-import user2 from '../../../Assets/user (3).jpg'
-import user3 from '../../../Assets/user (4).jpg'
-import user4 from '../../../Assets/user (5).jpg'
+  useEffect(() => {
+    fetchLoginActivity();
+    if (entityNumber) {
+      fetchLoginActivity();
+    }
+  }, [entityNumber]);
 
-const Activity = () => {
+  const fetchLoginActivity = async () => {
+    try {
+      const response = await axios.get('http://localhost:3002/recent-login-activity', {
+        params: { entityNumber }
+      });
+      console.log('Fetched login activity:', response);
+      if (response.data.success) {
+        setLoginActivity(response.data.loginActivity);
+      } else {
+        setLoginActivity([]);
+      }
+    } catch (error) {
+      console.error('Error fetching login activity:', error);
+    }
+  };
+
   return (
-    <div className='activitySection'>
-        <div className="heading flex">
-          <h1>Recent Activity</h1>
-          <button className='btn'>
-            See All
-            <BsArrowRightShort className='icon'/>
-          </button>
-        </div>
-
-        <div className="secContainer grid">
-          <div className="singleCustomer flex">
-            <img src={user} alt="Customer Image" />
-            <div className="customerDetails">
-              <span className="name">Ola Randy</span>
-              <small>Requested a file for prediction</small>
-            </div>
-            <div className="duration">
-              10 min ago
-            </div>
-          </div>
-
-          <div className="singleCustomer flex">
-            <img src={user1} alt="Customer Image" />
-            <div className="customerDetails">
-              <span className="name">Ola Themba</span>
-              <small>Requested a file for prediction</small>
-            </div>
-            <div className="duration">
-              15 min ago
-            </div>
-          </div>
-
-          <div className="singleCustomer flex">
-            <img src={user2} alt="Customer Image" />
-            <div className="customerDetails">
-              <span className="name">Ola Yandani</span>
-              <small>Requested a file for prediction</small>
-            </div>
-            <div className="duration">
-              28 min ago
-            </div>
-          </div>
-
-          <div className="singleCustomer flex">
-            <img src={user3} alt="Customer Image" />
-            <div className="customerDetails">
-              <span className="name">Ola Khulekani</span>
-              <small>Requested a file for prediction</small>
-            </div>
-            <div className="duration">
-              32 min ago
-            </div>
-          </div>
-          <div className="singleCustomer flex">
-            <img src={user4} alt="Customer Image" />
-            <div className="customerDetails">
-              <span className="name">Ola Sbusiso</span>
-              <small>Requested a file for prediction</small>
-            </div>
-            <div className="duration">
-              10 min ago
-            </div>
-          </div>
-        </div>
+    <div className="login-activity-container">
+      <h2>Recent Login Activity for {entityNumber}</h2>
+      <table className="login-activity-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Entity Number</th>
+            <th>Login Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loginActivity.length === 0 ? (
+            <tr>
+              <td colSpan="3">No login activity found.</td>
+            </tr>
+          ) : (
+            loginActivity.map((activity) => (
+              <tr key={activity.id}>
+                <td>{activity.id}</td>
+                <td>{activity.entityNumber}</td>
+                <td>{new Date(activity.login_time).toLocaleString()}</td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
     </div>
-  )
-}
+  );
+};
 
-export default Activity
+export default Activity;
