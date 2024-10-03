@@ -1,170 +1,161 @@
-/*# sourceMappingURL=Login.css.map */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    /* box-sizing: border-box; */
-    font-family: 'Poppins', sans-serif;
-}
-body {
+/* Container for the entire login section */
+.container-login {
+    position: relative;
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    /* background: #1f293a; */
-}
-
-section{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 100px;
+    background: #f0f4f8;
+    overflow: hidden;
+  }
   
-    background-image: url('../../LoginAssets/./loginback1.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background: linear-gradient(180deg, #008aff,#ff137d),url(bg.ph); */
-    background-blend-mode: screen;
-   
-}
-
-.smartAImage
-{
-    width: 300px;
-    height: 80%;
+  /* Box that holds the login form */
+  .login-box {
     position: relative;
-    top: 200px;
-    z-index: 2;
-    left: 40px;
-}
-
-
-.wave{
+    width: 400px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  /* Form title */
+  .login-box h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Input box styling */
+  .input-box {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .input-box input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #69b3e2;
+    outline: none;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .input-box input:focus {
+    border-bottom-color: #333;
+  }
+  
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+    transition: 0.5s;
+  }
+  
+  .input-box input:focus ~ label,
+  .input-box input:valid ~ label {
+    top: -5px;
+    color: #333;
+    font-size: 12px;
+  }
+  
+  /* Styling for the forgot password link */
+  .forgot-pass a {
+    font-size: 14px;
+    color: #69b3e2;
+    text-decoration: none;
+  }
+  
+  .forgot-pass a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styling for the login button */
+  .btn-login {
+    width: 100%;
+    background-color: #69b3e2;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-login:hover {
+    background-color: #5589af;
+  }
+  
+  .btn-login .icon {
+    margin-left: 5px;
+  }
+  
+  /* Signup link styling */
+  .signup-link a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .signup-link a:hover {
+    color: #69b3e2;
+    text-decoration: underline;
+  }
+  
+  /* Wave animation */
+  .wave {
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 1
-   
-}
-
-.container {
-    position: relative;
-    left: 460px;
-    bottom: 70px;
-    width: 240px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .smartAImage {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 150px;
+    height: auto;
+    z-index: 2;
+  }
+  
+  /* Animating background elements (spans) */
+  /* span {
+    position: absolute;
+    display: block;
+    width: 20px;
     height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.container span {
-    position: absolute;
-    left: 0;
-    width: 30px;
-    height: 6px;
-    background: #2c4766;
-    border-radius: 8px;
-    transform-origin: 115px;
-    transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
-    animation: animateBlink 28s linear infinite;
-    animation-delay: calc(var(--i) * (28s / 50));
-}
-@keyframes animateBlink {
+    background: rgba(105, 179, 226, 0.5);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+  }
+  
+  span:nth-child(odd) {
+    background: rgba(105, 179, 226, 0.7);
+  }
+  
+  @keyframes animate {
     0% {
-        background: #0ef;
+      transform: translateY(0) rotate(0);
+      opacity: 1;
     }
-    25% {
-        background: #2c4766;
+    100% {
+      transform: translateY(-800px) rotate(720deg);
+      opacity: 0;
     }
-}
-.login-box {
-    position: absolute;
-    width: 400px;
-}
-.login-box form {
-    width: 100%;
-    padding: 0 50px;
-}
-h2 {
-    font-size: 2em;
-    color: #0ef;
-    text-align: center;
-}
-.input-box {
-    position: relative;
-    margin: 25px 0;
-}
-.input-box input {
-    width: 100%;
-    height: 50px;
-    background: transparent;
-    border: 2px solid #2c4766;
-    outline: none;
-    border-radius: 40px;
-    font-size: 1em;
-    color: #fff;
-    padding: 0 20px;
-    transition: .5s ease;
-}
-.input-box input:focus,
-.input-box input:valid {
-    border-color: #0ef;
-}
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s ease;
-}
-.input-box input:focus~label,
-.input-box input:valid~label {
-    top: 1px;
-    font-size: .8em;
-    background: #1f293a;
-    padding: 0 6px;
-    color: #0ef;
-}
-.forgot-pass {
-    margin: -15px 0 10px;
-    text-align: center;
-}
-.forgot-pass a {
-    font-size: .85em;
-    color: #fff;
-    text-decoration: none;
-}
-.forgot-pass a:hover {
-    text-decoration: underline;
-}
-.btn {
-    width: 100%;
-    height: 45px;
-    background: #0ef;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    cursor: pointer;
-    font-size: 1em;
-    color: #1f293a;
-    font-weight: 600;
-}
-.signup-link {
-    margin: 20px 0 10px;
-    text-align: center;
-}
-.signup-link a {
-    font-size: 1em;
-    color: #0ef;
-    text-decoration: none;
-    font-weight: 600;
-}
-.signup-link a:hover {
-    text-decoration: underline;
-}/*# sourceMappingURL=Login.css.map */
+  }
+   */

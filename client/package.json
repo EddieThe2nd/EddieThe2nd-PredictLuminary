@@ -15,11 +15,6 @@
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.3",
     "emailjs-com": "^3.2.0",
-<<<<<<< HEAD
-=======
-    "gapi-script": "^1.2.0",
-    "list": "^2.0.19",
->>>>>>> themba-ai-section
     "papaparse": "^5.4.1",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",

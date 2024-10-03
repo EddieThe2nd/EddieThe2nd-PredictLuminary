@@ -48,25 +48,14 @@ const TransactionsPage = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
     <div>
       <h2>Transactions Overview</h2>
-=======
-    <div className="transactions-container">
-      <h2 className="transactions-header">Transactions Overview</h2>
->>>>>>> themba-ai-section
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
-<<<<<<< HEAD
         <BarChartComponentWrapper data={data} />
-=======
-        <div className="transactions-chart">
-          <BarChartComponentWrapper data={data} />
-        </div>
->>>>>>> themba-ai-section
       )}
     </div>
   );

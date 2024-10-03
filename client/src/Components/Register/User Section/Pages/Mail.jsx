@@ -8,9 +8,9 @@ function Mail() {
   const [success, setSuccess] = useState(false);
 
   // Your EmailJS service ID, template ID, and public API key
-  const service_id = "service_w02brkp";
-  const template_id = "template_e0twm1j";
-  const api_key = "Q0RIB2kH9M7QkCk54";
+  const service_id = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const template_id = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const api_key = import.meta.env.VITE_EMAILJS_API_KEY;
 
   const sendEmail = (e) => {
     e.preventDefault();

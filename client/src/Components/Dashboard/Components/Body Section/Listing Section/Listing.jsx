@@ -1,5 +1,5 @@
 import React from 'react'
-import './listing.css'
+import '../Listing Section/listing.css'
 
 //Imported icons
 import { BsArrowRightShort } from "react-icons/bs";

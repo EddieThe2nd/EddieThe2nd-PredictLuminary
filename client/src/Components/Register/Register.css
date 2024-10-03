@@ -1,126 +1,157 @@
-<<<<<<< HEAD
-/*# sourceMappingURL=Register.css.map */
-=======
-/*# sourceMappingURL=Register.css.map */
-/* Targeting only the register page container */
-.register-container .container {
-    display: flex;
-    background-color: #f4f4f4; /* Lighter background color for better contrast */
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    width: 80%; /* Increase container width */
-    max-width: 1200px; /* Adjust max-width */
-    margin-right: 890px;
-    margin-top: 100px;
-    padding: 400px; /* Adjust padding for more space inside */
-  }
-  
-  /* Register form styles */
-  .register-container .formDiv {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 40px 60px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
+/* Register.css */
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+
+
+
+
+.videoDiv {
+  flex: 1;
+  position: relative;
+}
+
+.videoDiv video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textDiv {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  color: #a54b4b;
+}
+
+.textDiv .title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.textDiv p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.footerDiv {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  color: #a53232;
+}
+
+.footerDiv .text {
+  margin-right: 10px;
+}
+
+.footerDiv .btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.footerDiv .btn:hover {
+  background-color: #0056b3;
+}
+
+.formDiv-container {
+  flex: 1;
+  padding: 40px;
+  background-color: #fff;
+}
+
+.headerDiv h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.inputDiv label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.input input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  background-color: transparent;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.forgotPassword {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.forgotPassword a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgotPassword a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    width: 90%;
   }
-  
-  .register-container .headerDiv {
-    text-align: center;
-    margin-bottom: 30px;
+
+  .videoDiv {
+    display: none;
   }
-  
-  .register-container .headerDiv h3 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+
+  .formDiv-container {
+    padding: 20px;
   }
-  
-  .register-container .form {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .register-container .inputDiv {
-    margin-bottom: 20px;
-  }
-  
-  .register-container .inputDiv label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 5px;
-  }
-  
-  .register-container .inputDiv .input {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 10px;
-    background-color: #fafafa;
-  }
-  
-  .register-container .inputDiv .input input {
-    flex: 1;
-    border: none;
-    background-color: transparent;
-    padding-left: 10px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .register-container .inputDiv .input input:focus {
-    outline: none;
-  }
-  
-  .register-container .inputDiv .icon {
-    color: #333;
-    font-size: 18px;
-  }
-  
-  .register-container .btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #1e90ff;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .register-container .btn:hover {
-    background-color: #1c86ee;
-  }
-  
-  .register-container .error {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .register-container .forgotPassword {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  .register-container .forgotPassword a {
-    color: #1e90ff;
-    text-decoration: none;
-  }
-  
-  .register-container .forgotPassword a:hover {
-    text-decoration: underline;
-  }
-  
->>>>>>> themba-ai-section
+}

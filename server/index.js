@@ -111,29 +111,93 @@ app.post('/register-company', (req, res) => {
     });
 });
 
+
+
 // Endpoint to register a user
 app.post('/register', async (req, res) => {
-    const { entityNumber, password } = req.body; // Use entityNumber instead of username
+    const { entityNumber, password, email } = req.body; // Ensure email is part of the registration data
 
-    try {
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10); // 10 is the salt rounds
+    console.log('Received registration data:', { entityNumber, password, email });
 
-        // Save user with the hashed password into the database
-        const sql = 'INSERT INTO users_insurance (entityNumber, password) VALUES (?, ?)';
-        db.query(sql, [entityNumber, hashedPassword], (err, result) => {
-            if (err) {
-                console.error('Error inserting user:', err);
-                return res.status(500).send({ error: 'Database error during registration' });
-            }
-            res.send({ success: true, message: 'User registered successfully!' });
-        });
+    // Check if the user is already registered
+    const checkUserSQL = 'SELECT * FROM users_insurance WHERE entityNumber = ?';
+    db.query(checkUserSQL, [entityNumber], async (err, userResults) => {
+        if (err) {
+            console.error('Error checking user registration:', err);
+            return res.status(500).send({ success: false, message: 'Database query error' });
+        } else if (userResults.length > 0) {
+            console.log('User already registered:', userResults);
+            return res.send({ success: false, message: 'User has already been registered' });
+        } else {
+            // If user does not exist, proceed with checking entity number
+            const checkEntitySQL = 'SELECT * FROM registeringcompanies WHERE entityNumber = ?';
+            db.query(checkEntitySQL, [entityNumber], (err, results) => {
+                if (err) {
+                    console.error('Error checking entity number:', err);
+                    return res.status(500).send({ success: false, message: 'Database query error' });
+                } else if (results.length === 0) {
+                    console.log('Entity number does not exist in registeringcompanies');
+                    return res.send({ success: false, message: 'Entity number does not exist' });
+                } else {
+                    console.log('Entity number exists:', results);
 
-    } catch (error) {
-        console.error('Error hashing password:', error);
-        res.status(500).send({ error: 'Error hashing password' });
-    }
+                    // First, insert into user_subscriptions table
+                    const insertSubscriptionSQL = 'INSERT INTO user_subscriptions(entityNumber, subscription_planID, subscription_plan, start_date, end_date, paystack_customer_code, paystack_subscriptions_code) VALUES (?, ?, ?, ?, ?, ?, ?)';
+                    const startDate = '2000-01-01'; // Use appropriate date values
+                    const endDate = '2000-01-01'; // Use appropriate date values
+
+                    db.query(insertSubscriptionSQL, [entityNumber, 'inactive_sub', 'Inactive Subscription', startDate, endDate, 'none', 'none'], (err, subResults) => {
+                        if (err) {
+                            console.error('Error inserting user subscription:', err);
+                            return res.status(500).send({ success: false, message: 'Database insertion error for subscription' });
+                        }
+
+                        console.log('User subscription registered successfully:', subResults);
+
+                        // Fetch the sub_ID of the inserted subscription
+                        const fetchSubIDSQL = 'SELECT sub_ID FROM user_subscriptions WHERE entityNumber = ?';
+                        db.query(fetchSubIDSQL, [entityNumber], async (err, subIDResults) => {
+                            if (err) {
+                                console.error('Error fetching subscription ID:', err);
+                                return res.status(500).send({ success: false, message: 'Database query error for subscription ID' });
+                            }
+
+                            const sub_ID = subIDResults.length > 0 ? subIDResults[0].sub_ID : null; // Get the subscription ID
+
+                            if (!sub_ID) {
+                                console.error('Subscription ID is null');
+                                return res.status(400).send({ success: false, message: 'Failed to retrieve subscription ID' });
+                            }
+
+                            // Hash the password before inserting into the database
+                            try {
+                                const hashedPassword = await bcrypt.hash(password, 10); // Hash the password with a salt round of 10
+
+                                // Insert into users_insurance table
+                                const insertUserSQL = 'INSERT INTO users_insurance (entityNumber, email, password, sub_ID, subscription_planID) VALUES (?, ?, ?, ?, ?)';
+                                db.query(insertUserSQL, [entityNumber, email, hashedPassword, sub_ID, 'inactive_sub'], (err, results) => {
+                                    if (err) {
+                                        console.error('Error inserting user:', err);
+                                        return res.status(500).send({ success: false, message: 'Database insertion error' });
+                                    }
+
+                                    console.log('User registered successfully:', results);
+                                    res.send({ success: true, message: 'User and subscription registered successfully' });
+                                });
+                            } catch (hashErr) {
+                                console.error('Error hashing password:', hashErr);
+                                return res.status(500).send({ success: false, message: 'Password hashing error' });
+                            }
+                        });
+                    });
+                }
+            });
+        }
+    });
 });
+
+
+
 
 //Endpoint to handle user login
 app.post('/login', (req, res) => {
@@ -147,13 +211,6 @@ app.post('/login', (req, res) => {
             return res.status(500).send({ error: 'Database query error' });
         }
 
-<<<<<<< HEAD
-            const insertUserSQL = 'INSERT INTO users_insurance (entityNumber, password) VALUES (?, ?)';
-            db.query(insertUserSQL, [entityNumber, password], (err, results) => {
-                if (err) {
-                    console.error('Error inserting user:', err);
-                    res.status(500).send({ success: false, message: 'Database insertion error' });
-=======
         if (adminResults.length > 0) {
             // Admin found, proceed to check password
             const admin = adminResults[0];
@@ -177,7 +234,6 @@ app.post('/login', (req, res) => {
                         entityNumber: entityNumber,
                         subscriptionStatus: admin.subscription_status
                     });
->>>>>>> themba-ai-section
                 } else {
                     console.log('Invalid password for admin');
                     return res.send({ success: false, message: 'Invalid entity number or password' });
@@ -240,11 +296,6 @@ app.post('/login', (req, res) => {
 app.get('/api/get-subscription-status', (req, res) => {
     const entityNumber = req.query.entityNumber;
 
-<<<<<<< HEAD
-    // Check in admins table first
-    const adminLoginSQL = 'SELECT * FROM admins_insuranace WHERE username = ?';
-    db.query(adminLoginSQL, [entityNumber.toLowerCase()], (err, adminResults) => {
-=======
     if (!entityNumber) {
         return res.status(400).json({ success: false, message: 'Entity number is required' });
     }
@@ -253,7 +304,6 @@ app.get('/api/get-subscription-status', (req, res) => {
 
     const query = 'SELECT subscription_status FROM users_insurance WHERE entityNumber = ?';
     db.query(query, [entityNumber], (err, results) => {
->>>>>>> themba-ai-section
         if (err) {
             console.error('Error fetching subscription status:', err);
             return res.status(500).send({ success: false, message: 'Database query error' });
@@ -268,27 +318,6 @@ app.get('/api/get-subscription-status', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-        // Check in users table
-        const userLoginSQL = 'SELECT * FROM users_insurance WHERE entityNumber = ?';
-        db.query(userLoginSQL, [entityNumber.toLowerCase()], (err, userResults) => {
-            if (err) {
-                console.error('Error during user login:', err);
-                return res.status(500).send({ error: 'Database query error' });
-            }
-
-            if (userResults.length > 0) {
-                if (password === userResults[0].password) {
-                    console.log('User login successful');
-                    return res.send({ success: true, message: 'Login successful', role: 'user' });
-                }
-                console.log('Invalid user credentials');
-                return res.send({ success: false, message: 'Invalid entity number or password' });
-            }
-
-            console.log('Invalid entity number or password');
-            return res.send({ success: false, message: 'Invalid entity number or password' });
-=======
 // Endpoint to get recent login activity
 app.get('/recent-login-activity', (req, res) => {
     // console.log(req.body)
@@ -315,7 +344,6 @@ app.get('/recent-login-activity', (req, res) => {
         res.json({
             success: true,
             loginActivity: results
->>>>>>> themba-ai-section
         });
     });
 });
@@ -333,8 +361,6 @@ app.post('/check-email', (req, res) => {
         res.send({ exists: results.length > 0 });
     });
 });
-<<<<<<< HEAD
-=======
 
 
 
@@ -543,25 +569,33 @@ const checkAndUpdateExpiredSubscriptions = () => {
 setInterval(checkAndUpdateExpiredSubscriptions, 60 * 1000); // Runs every 60 seconds (1 minute)
 
 // Endpoint to check if entity number exists
-app.post('/api/check-entity', (req, res) => {
-    const entityNumber = req.body.entityNumber;
+// Temporary endpoint to check entity number
+app.post('/check-entity', (req, res) => {
+    const { entityNumber } = req.body;
 
-    console.log('Checking if entity number exists:', { entityNumber });
-
-    const query = 'SELECT * FROM users_insurance WHERE entityNumber = ?';
-    db.query(query, [entityNumber], (err, results) => {
+    // Check if the entity number exists in the registeringcompanies table
+    const checkEntitySQL = 'SELECT * FROM registeringcompanies WHERE entityNumber = ?';
+    db.query(checkEntitySQL, [entityNumber], (err, results) => {
         if (err) {
-            console.error('Error checking entity number:', err);
-            res.status(500).send({ error: 'Database error' });
-        } else if (results.length > 0) {
-            console.log('Found entity number:', { entityNumber });
-            res.send({ exists: true, email: results[0].email }); // Sending email associated with entityNumber
-        } else {
-            console.log('Cannot find entity number:', { entityNumber });
-            res.send({ exists: false });
+            console.error('Database error during entity check:', err);
+            return res.status(500).send({ error: 'Database query error' });
         }
+
+        if (results.length === 0) {
+            // Entity number does not exist
+            return res.status(400).send({ success: false, message: 'Entity number does not exist' });
+        }
+
+        // Entity number exists
+        res.send({ success: true, message: 'Entity number exists' });
     });
 });
+
+
+
+
+
+
 
 
 // Endpoint to get user subscription details
@@ -605,4 +639,3 @@ app.get('/user-subscription', (req, res) => {
         }
     });
 });
->>>>>>> themba-ai-section

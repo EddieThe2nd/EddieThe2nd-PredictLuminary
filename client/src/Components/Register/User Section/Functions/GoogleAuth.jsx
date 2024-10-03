@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
-const CLIENT_ID = '535838110120-b9ms9isillqu3l8kscuijsc0aasabn74.apps.googleusercontent.com';
-const API_KEY = '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';
+const CLIENT_ID = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
+const API_KEY = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_SECRET;
 const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'];
 const SCOPES = 'https://www.googleapis.com/auth/gmail.send';
 

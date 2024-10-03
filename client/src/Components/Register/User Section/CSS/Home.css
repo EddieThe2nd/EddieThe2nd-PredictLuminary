@@ -24,8 +24,10 @@
 
 /* Control the right side */
 .RightSide {
+    position: absolute;
     height: 100%;
     width: 50%;
+    left: 790px;
 }
 
 /* Logo image styles */

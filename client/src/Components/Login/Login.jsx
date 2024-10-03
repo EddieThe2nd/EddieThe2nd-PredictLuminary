@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-import './Login.css';
+import '../Login/Login.css';
 import video from '../../../src/LoginAssets/future.mp4';
 import logo from '../../../src/LoginAssets/thinkBot.gif';
 import { FaUserShield } from "react-icons/fa";

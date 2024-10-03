@@ -1,169 +1,182 @@
 import React, { useState } from 'react';
-import './Register.css';
-import '../../App.css';
-import { Link, useNavigate } from 'react-router-dom';
-import Axios from 'axios';
-
-// Import assets
-import video from '../../../src/LoginAssets/future.mp4';
-import logo from '../../../src/LoginAssets/thinkBot.gif';
-
-// Imported Icons
-import { FaUserShield } from "react-icons/fa";
-import { BsFillShieldLockFill } from "react-icons/bs";
-import { AiOutlineSwapRight } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
+import './Register.css'; // Ensure the correct path to your CSS file
+import axios from 'axios';
 
 const Register = () => {
-  const [entityNumber, setEntityNumber] = useState('');
-  const [password, setPassword] = useState('');
-<<<<<<< HEAD
-  const [confirmPassword, setConfirmPassword] = useState(''); // State for confirm password
-=======
-  const [confirmPassword, setConfirmPassword] = useState('');
->>>>>>> themba-ai-section
-  const [errorMessage, setErrorMessage] = useState('');
-  const navigateTo = useNavigate(); // Initialize useNavigate
+    const [entityNumber, setEntityNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate(); // Initialize useNavigate
 
-  const createUser = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    // Password validation regex (8 characters, numbers, special characters)
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-    // Validate fields
-<<<<<<< HEAD
-    if (!entityNumber || !email || !password || !confirmPassword) {
-=======
-    if (!entityNumber || !password || !confirmPassword) {
->>>>>>> themba-ai-section
-      setErrorMessage('Please fill in all fields.');
-      return;
-    }
+    const validateForm = () => {
+        if (!passwordRegex.test(password)) {
+            setError('Password must be at least 8 characters long and contain at least one number and one special character');
+            return false;
+        }
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return false;
+        }
+        return true;
+    };
 
-<<<<<<< HEAD
-    // Password validation: at least 8 characters, with both lowercase and uppercase letters
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    if (!passwordPattern.test(password)) {
-      setErrorMessage('Password must be at least 8 characters long and include both lowercase and uppercase letters.');
-      return;
-    }
+    const checkEntityNumber = async () => {
+        try {
+            const response = await axios.post('http://localhost:3002/register', { entityNumber,email,password });
+            if (!response.data.success) {
+                console.log('User Succesfully Registered');
+                navigateTo('/');
+                return false; // Entity exists
+            }
+            return true; // Entity number is available
+        } catch (err) {
+            console.error('Error checking entity number:', err);
+            setError('Error checking entity number');
+            return false; // Indicate an error occurred
+        }
+    };
 
-=======
-    // Check if passwords match
->>>>>>> themba-ai-section
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
-    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        setSuccess('');
 
-    // Clear error message if validation passes
-    setErrorMessage('');
+        if (!validateForm()) {
+            return;
+        }
 
-    try {
-      // Axios call to create user
-      const response = await Axios.post('http://localhost:3002/register', {
-        entityNumber,
-        password
-      });
+        setLoading(true);
 
-      if (response.data.success) {
-        console.log('User registered successfully');
-        navigateTo('/'); // Redirect to login page upon successful registration
-        setEntityNumber('');
-        setPassword('');
-<<<<<<< HEAD
-        setConfirmPassword(''); // Clear confirm password field
-=======
-        setConfirmPassword('');
->>>>>>> themba-ai-section
-      } else {
-        console.log('Error registering user:', response.data.message);
-        setErrorMessage(response.data.message || 'Error creating user. Please try again.');
-      }
-    } catch (error) {
-      console.error('There was an error creating the user!', error);
-      setErrorMessage('Error creating user. Please try again.');
-    }
-  };
+       
 
-  return (
-    <div className='registerPage flex register-container'>
-      <div className="container flex">
-        <div className="videoDiv">
-          <video src={video} autoPlay muted loop></video>
-          <div className="textDiv">
-            <h2 className='title'>ForeSight AI</h2>
-            <p>Embrace the Clarity of ForeSight!</p>
-          </div>
-          <div className="footerDiv flex">
-            <span className='text'>Have an account?</span>
-            <Link to={'/'}>
-              <button className='btn'>Login</button>
-            </Link>
-          </div>
+        // Proceed with registration
+        try {
+            const response = await axios.post('http://localhost:3002/register', {
+                entityNumber,
+                email, // Include email in request
+                password
+            });
+            if (response.data.success) {
+                setSuccess(response.data.message);
+                setEntityNumber('');
+                setEmail(''); // Clear email after success
+                setPassword('');
+                setConfirmPassword('');
+            } else {
+                setError(response.data.message || 'Registration failed');
+            }
+        } catch (err) {
+            console.error('Registration error:', err);
+            if (err.response) {
+                setError(err.response.data.message || 'Registration failed with an unknown error');
+            } else if (err.request) {
+                setError('No response received from the server. Please try again later.');
+            } else {
+                setError('Error in setting up registration request: ' + err.message);
+            }
+        }
+
+        setLoading(false);
+    };
+    const handleLoginClick = () => {
+        navigate('/'); // Navigate to the login page
+    };
+
+
+    return (
+        <div className="register-container">
+            <div className="container">
+                {/* Left side with the video */}
+                <div className="videoDiv">
+                    <video autoPlay muted loop>
+                        <source src="your-video-url.mp4" type="video/mp4" />
+                    </video>
+                    <div className="textDiv">
+                        <h1 className="title">Welcome</h1>
+                        <p>Join us today and start your journey</p>
+                    </div>
+                    <div className="footerDiv">
+                        <span className="text">Already have an account?</span>
+                        <button className="btn" onClick={handleLoginClick}>Login</button>
+                    </div>
+                </div>
+
+                {/* Right side with the registration form */}
+                <div className="formDiv-container">
+                    <div className="headerDiv">
+                        <h3>Register</h3>
+                    </div>
+                    <form className="form" onSubmit={handleSubmit}>
+                        <div className="inputDiv">
+                            <label>Entity Number</label>
+                            <div className="input">
+                                <input
+                                    type="text"
+                                    value={entityNumber}
+                                    onChange={(e) => setEntityNumber(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label>Email</label>
+                            <div className="input">
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label>Password</label>
+                            <div className="input">
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label>Confirm Password</label>
+                            <div className="input">
+                                <input
+                                    type="password"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        {error && <p className="error">{error}</p>}
+                        {success && <p style={{ color: 'green' }}>{success}</p>}
+
+                        <button className="btn" type="submit" disabled={loading}>
+                            {loading ? 'Registering...' : 'Register'}
+                        </button>
+                    </form>
+                    <p className="forgotPassword">
+                        Forgot your password? <a href="#">Reset it here</a>
+                    </p>
+                </div>
+            </div>
         </div>
-
-        <div className="formDiv flex">
-          <div className="headerDiv">
-            {/* <img src={logo} alt="Logo Image"  /> */}
-            <h3>Let Us Know You</h3>
-          </div>
-
-          <form className='form grid' onSubmit={createUser}>
-            {errorMessage && <span className='error'>{errorMessage}</span>}
-
-            <div className="inputDiv">
-              <label htmlFor="entityNumber">Entity Number</label>
-              <div className="input flex">
-                <FaUserShield className='icon' />
-                <input
-                  type="text"
-                  id='entityNumber'
-                  placeholder='Enter Entity Number'
-                  onChange={(event) => setEntityNumber(event.target.value)}
-                  value={entityNumber}
-                />
-              </div>
-            </div>
-
-            <div className="inputDiv">
-              <label htmlFor="password">Password</label>
-              <div className="input flex">
-                <BsFillShieldLockFill className='icon' />
-                <input
-                  type="password"
-                  id='password'
-                  placeholder='Enter Password'
-                  onChange={(event) => setPassword(event.target.value)}
-                  value={password}
-                />
-              </div>
-            </div>
-
-            <div className="inputDiv">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <div className="input flex">
-                <BsFillShieldLockFill className='icon' />
-                <input
-                  type="password"
-                  id='confirmPassword'
-                  placeholder='Confirm Password'
-                  onChange={(event) => setConfirmPassword(event.target.value)}
-                  value={confirmPassword}
-                />
-              </div>
-            </div>
-
-            <button type='submit' className='btn flex'>
-              <span>Register</span>
-              <AiOutlineSwapRight className='icon' />
-            </button>
-
-            <span className='forgotPassword'>
-              Forgot your password? <a href="">Click Here</a>
-            </span>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Register;

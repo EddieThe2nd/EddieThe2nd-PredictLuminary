@@ -1,54 +1,10 @@
-<<<<<<< HEAD
-import React, { useContext, useState, useEffect } from 'react';
-=======
 import React, { useContext, useState } from 'react';
->>>>>>> themba-ai-section
-import { FileContext } from '../Functions/FileContext'; // Ensure correct import path
+import { FileContext } from '../Functions/FileContext.jsx'; // Ensure correct import path
 import axios from 'axios';
 import '../CSS/Dashboard.css';
 import Papa from 'papaparse';
 
 function Dashboard() {
-<<<<<<< HEAD
-    const { file } = useContext(FileContext); // File recieved from Home.JSX
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    const [top50Data, setTop50Data] = useState([]);
-    const [paymentSuccess, setPaymentSuccess] = useState(false);
-    const [email, setEmail] = useState(''); // New state for email
-
-    useEffect(() => {
-        // Load Paystack script dynamically
-        const script = document.createElement('script');
-        script.src = 'https://js.paystack.co/v1/inline.js';
-        script.async = true;
-        document.body.appendChild(script);
-
-        // Check if the user has returned from Paystack
-        const queryParams = new URLSearchParams(window.location.search);
-        if (queryParams.get('payment_status') === 'success') {
-            setPaymentSuccess(true);
-            handleFileUpload(); // Proceed with file upload if payment was successful
-        }
-
-        // Clean up script on component unmount
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
-
-    const handleFileUpload = async () => {
-        const fileToUpload = retrieveFileFromLocalStorage();
-        if (!fileToUpload) {
-            console.error('No file found in local storage');
-            return;
-        }
-
-        // Create a FormData object to send the file
-        const formData = new FormData();
-        formData.append('file', fileToUpload);
-
-=======
     const { file } = useContext(FileContext); // File received from Home.JSX
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -65,7 +21,6 @@ function Dashboard() {
         const formData = new FormData();
         formData.append('file', fileToUpload);
 
->>>>>>> themba-ai-section
         try {
             setLoading(true);
             setError('');
@@ -127,15 +82,6 @@ function Dashboard() {
         }
     };
 
-<<<<<<< HEAD
-    const storeFileInLocalStorage = (file) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            localStorage.setItem('file', reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
-=======
     // const storeFileInLocalStorage = (file) => {
     //     const reader = new FileReader();
     //     reader.onloadend = () => {
@@ -143,7 +89,6 @@ function Dashboard() {
     //     };
     //     reader.readAsDataURL(file);
     // };
->>>>>>> themba-ai-section
 
     const retrieveFileFromLocalStorage = () => {
         const fileData = localStorage.getItem('file');
@@ -160,59 +105,13 @@ function Dashboard() {
         return null;
     };
 
-<<<<<<< HEAD
-    const redirectToPaystack = () => {
-        storeFileInLocalStorage(file);
-
-        const paystack = window.PaystackPop;
-        if (paystack) {
-            // Paystack passing values 
-            const handler = paystack.setup({
-                key: 'pk_test_59d1cdfa12f3adbf8adce629de28b189e5e0ee40',
-                email: email,
-                amount: 9999,
-                currency: 'ZAR',
-                callback: function(response) {
-                    // Handle successful payment
-                    if (response.status === 'success') {
-                        setPaymentSuccess(true);
-                        handleFileUpload(); // Proceed with file upload if payment was successful
-                    }
-                },
-                onClose: function() {
-                    // Handle the case when the user closes the popup
-                    console.log('Payment popup closed');
-                }
-            });
-            handler.openIframe(); // Open the payment form in a popup
-        } else {
-            console.error('Paystack library is not loaded');
-        }
-    };
-
-=======
->>>>>>> themba-ai-section
     return (
         <div className="DashboardContainer">
             {!file && (<h1 className="BaseH1">Return to homepage and add a file</h1>)}
             {file && (
                 <div>
                     <p>Selected File: {file.name}</p>
-<<<<<<< HEAD
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        disabled={paymentSuccess} // Disable input after payment success
-                    />
-                    <button onClick={redirectToPaystack} disabled={paymentSuccess || !email}>
-                        Payment First
-                    </button>
-                    <button onClick={handleFileUpload} disabled={!paymentSuccess || loading}>
-=======
                     <button onClick={handleFileUpload} disabled={loading}>
->>>>>>> themba-ai-section
                         {loading ? 'Processing...' : 'Download file'}
                     </button>
                 </div>

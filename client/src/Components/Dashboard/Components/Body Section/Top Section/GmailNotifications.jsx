@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script';
 import './Gmail.css'; // Adjust path as necessary
 
-const CLIENT_ID = '535838110120-b9ms9isillqu3l8kscuijsc0aasabn74.apps.googleusercontent.com';
-const API_KEY = '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';
+const CLIENT_ID = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
+const API_KEY = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_SECRET;
 const SCOPES = 'https://www.googleapis.com/auth/gmail.readonly';
 
 const GmailNotification = () => {

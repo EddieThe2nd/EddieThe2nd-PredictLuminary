@@ -4,12 +4,12 @@
 }
 
 .sidebar {
-  width: 100%;
+  width: 290px;
   background-color: #2C3E50;
   color: #fff;
   position: absolute;
-  right: 1025px;
-  top: 70px;
+  right: 1059px;
+  top: 65px;
   height: 100%;
 }
 
