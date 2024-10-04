@@ -1,0 +1,69 @@
+/* sidebar.css */
+.sideBar {
+    background-color: #1f1d2b;
+    color: #fff;
+    height: 100vh;
+    width: 280px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logoDiv {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.logoDiv img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.menuDiv,
+.settingsDiv {
+    margin-bottom: 2rem;
+}
+
+.divTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #a4a6b3;
+}
+
+.menuLists {
+    list-style: none;
+    padding: 0;
+}
+
+.listItem {
+    margin-bottom: 1.5rem;
+}
+
+.menuLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #a4a6b3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menuLink:hover {
+    color: #fff;
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.logout .menuLink {
+    color: #f05454;
+}
+
+.logout .menuLink:hover {
+    color: #ff6464;
+}

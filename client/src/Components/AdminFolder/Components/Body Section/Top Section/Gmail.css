@@ -1,0 +1,79 @@
+/* Email icon styling */
+.email-icon {
+    font-size: 80px; 
+    cursor: pointer; 
+    color: #007bff; 
+}
+
+
+/* Pop up container */
+.popup {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(6, 155, 73, 0.5); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #fff; 
+    color: #0d335c;
+    padding: 20px; 
+    border-radius: 10px; 
+    width: 85%; 
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Email table */
+.email-table {
+    width: 100%; 
+    border-collapse: collapse;
+    margin-top: 20px; 
+}
+
+/* Table header and cell styling */
+.email-table th, .email-table td {
+    border: 1px solid #ddd; 
+    padding: 10px; 
+    color: #074b0d;
+    
+}
+
+/* Table header styling */
+.email-table th {
+    background-color: #f2f2f2; 
+    text-align: left; 
+    color: #81c0dd;
+}
+
+/* Email item styling */
+.email-item {
+    background-color: #f9f9f9; 
+    margin-bottom: 10px; 
+    padding: 15px; 
+    border-radius: 5px; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Close button styling */
+.close-btn {
+    background-color: #ff4d4d; 
+    color: white; 
+    padding: 8px 12px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 14px; 
+}
+
+/* Close button hover effect */
+.close-btn:hover {
+    background-color: #ff1a1a; 
+}

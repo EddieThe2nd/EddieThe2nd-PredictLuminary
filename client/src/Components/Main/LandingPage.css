@@ -1,0 +1,211 @@
+
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+/* Full-page setup */
+/* body, html {
+    height: 100%;
+    overflow: hidden;
+    background-image: ;
+    color: white;
+} */
+
+/* Main container for the landing page */
+.landing-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1f1f3a, #0b0c10);
+    overflow: hidden;
+    border-radius: 30px; /* Soft rounded corners for depth */
+    
+    /* Adding depth with shadows */
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5), /* Outer shadow for depth */
+        inset 0 0 30px rgba(255, 255, 255, 0.1), /* Inner glow for a folded look */
+        inset 0 0 60px rgba(0, 0, 0, 0.5); /* Darker inner shadow for depth */
+}
+
+/* Header section */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    padding: 20px 50px;
+}
+
+/* Logo */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #31a2f2;
+    letter-spacing: 4px;
+    text-transform: unset;
+}
+
+/* Get Started Button */
+.get-started-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #31a2f2;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.get-started-button:hover {
+    background-color: #2091d4;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    z-index: 2;
+    color: #eaeaea;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hero-description {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: #cccccc;
+}
+
+.cta-button {
+    padding: 15px 35px;
+    background-color: #ff7315;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff5722;
+    transform: scale(1.05);
+}
+
+/* Floating elements for dynamic interaction */
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.floating-element {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 162, 255, 0.15);
+    box-shadow: 0 0 30px rgba(0, 162, 255, 0.7);
+    transition: transform 0.1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.element-1 {
+    width: 120px;
+    height: 120px;
+    top: 10%;
+    left: 30%;
+}
+
+.element-2 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 70%;
+}
+
+.element-3 {
+    width: 80px;
+    height: 80px;
+    top: 80%;
+    left: 20%;
+}
+
+.element-4 {
+    width: 150px;
+    height: 150px;
+    top: 20%;
+    left: 10%;
+}
+
+.element-5 {
+    width: 300px;
+    height: 300px;
+    top: 60%;
+    left: 50%;
+}
+
+/* Make sure icons are centered */
+.floating-element i {
+    color: #fff; /* Change color if needed */
+    font-size: 3rem; /* Adjust size */
+}
+
+/* Floating animation (optional if you want a subtle movement) */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Hover effects to follow the mouse */
+.hero-section:hover .hero-title {
+    transform: translateY(-10px);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        align-items: center;
+    }
+
+    .get-started-button {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,107 @@
+.HomeContainer {
+    margin-top: 10px;
+    padding: 0;
+    /* background-color: #9BBEbA; */
+    position: absolute;
+    top: 70px;
+    right: 250px;
+    width: 79%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Control the left side */
+.LeftSide .logo_img{
+    background-color: #9BBEbA; 
+    height: 450px;
+    width: 400px;
+    position: absolute;
+    right: 350px;
+    top: 80px;
+}
+
+/* Control the right side */
+.RightSide {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 790px;
+}
+
+/* Logo image styles */
+.logo_img {
+    height: 520px;
+    width: 100px;
+    border-radius: 0 0 5px 0;
+}
+
+.logo_img2 {
+    height: 250px;
+    width: 250px;
+    justify-self: center;
+    border-radius: 20px;
+}
+
+/* Button container */
+.btnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Header text style */
+.h1_letsGetStarted {
+    font-size: 45px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 90px; /* Added margin to separate from buttons */
+    width: 450px;
+}
+
+/* Add file button style */
+.addFile_btn {
+    height: 43px;
+    width: 90%;
+    border-style: none;
+    background-color: #9BBEbA;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px; /* Added margin to separate from payment button */
+}
+
+/* Add file button hover effect */
+.addFile_btn:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+/* Pay button style */
+.pay_btn {
+    height: 43px;
+    width: 90%;
+    border-style: none;
+    background-color: #4CAF50; /* Green color for the pay button */
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Pay button hover effect */
+.pay_btn:hover {
+    cursor: pointer;
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Disabled button style */
+.pay_btn:disabled {
+    background-color: #cccccc; /* Grey color for disabled state */
+    cursor: not-allowed;
+}

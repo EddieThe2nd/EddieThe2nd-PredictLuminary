@@ -1,0 +1,134 @@
+
+
+/* Background with overlay */
+.register-container {
+    position: relative;
+    height: 100vh;
+    background-image: url('../../../../../LoginAssets/agent.jpeg'); /* Replace with your background image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column; /* Adjust for the top bar */
+    justify-content: center;    
+    align-items: center;    
+}
+
+/* Gradient overlay effect */
+.register-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 4, 11, 0.589); /* Dark semi-transparent overlay */
+    z-index: 1;
+}
+
+/* Top bar styling */
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #08243565; /* Top bar background */
+    padding: 20px 20px; /* Adjust padding as needed */
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between title and button */
+    align-items: center; /* Center vertically */
+    z-index: 3; /* Ensure it is above the overlay */
+}
+
+.top-bar-title {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* Back button styling */
+.back-button {
+    background-color: #9bc0da; /* Transparent background */
+    color: #ffffff; /* White text */
+    padding: 20px;
+    border-radius: 10px;
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 18px; /* Font size */
+    transition: color 0.3s; /* Transition for hover effect */
+}
+
+/* Back button hover effect */
+.back-button:hover {
+    color: #2091d4; /* Change color on hover */
+}
+
+/* Registration card */
+.register-card {
+    position: relative;
+    right: 400px;
+    width: 650px;
+    background: rgba(156, 169, 181, 0.568); /* Slight transparency */
+    border-radius: 80px;
+    padding: 60px;
+    z-index: 2;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.699); /* More pronounced shadow */
+}
+
+/* Title style */
+.register-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #131212;
+    font-weight: 600;
+}
+
+/* Input fields */
+.register-input-field {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f928;
+    transition: border-color 0.3s ease;
+}
+
+/* Input focus effect */
+.input-field:focus {
+    border-color: #464a4d;
+    outline: none;
+}
+
+/* Button style */
+.register-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #0b1d2a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+.register-button:hover {
+    background-color: #2091d4;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* For smaller screens */
+@media (max-width: 600px) {
+    .register-card {
+        width: 90%;
+        padding: 30px;
+    }
+    
+    .input-field, .register-button {
+        font-size: 14px;
+    }
+}

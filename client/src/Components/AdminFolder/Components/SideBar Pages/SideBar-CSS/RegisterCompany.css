@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primaryColor: hsl(94, 55%, 56%);
+  --hoverColor: hsl(93, 75%, 76%);
+  --paleGreen: hsl(96, 75%, 89%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 75%);
+  --bgColor: hsl(113, 11%, 85%);
+  --inputColor: hsl(330, 12%, 97%);
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+}
+
+.register-company-container, .register-company-container * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.register-company-container {
+  height: 100%;
+}
+
+.register-company-container .background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.register-company-container .form-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-company-container h1 {
+  text-align: center;
+  color: var(--blackColor);
+  font-size: var(--h1FontSize);
+  margin-bottom: 20px;
+}
+
+.register-company-container .form-group {
+  margin-bottom: 15px;
+}
+
+.register-company-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--blackColor);
+  font-size: var(--normalFontSize);
+}
+
+.register-company-container input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid var(--greyText);
+  border-radius: 5px;
+  background: var(--inputColor);
+}
+
+.register-company-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  font-size: var(--normalFontSize);
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.register-company-container button:hover {
+  background-color: var(--hoverColor);
+  color: var(--blackColor);
+}
+
+.register-company-container .submit-button {
+  background-color: var(--primaryColor);
+}
+
+.register-company-container .submit-button:hover {
+  background-color: var(--hoverColor);
+}

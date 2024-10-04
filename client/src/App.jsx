@@ -1,24 +1,29 @@
 // src/App.jsx
 // import './App.css';
-import Dashboard from './Components/Dashboard/Dashboard';
+import AdminDashboard from './Components/AdminFolder/Dashboard';
 import Login from './Components/Login/Login';
-import Register from './Components/Register/Register';
-import UserPage from './Components/Register/User Section/UserPage'; // Adjust the path as necessary
-import RegisterCompany from './Components/Dashboard/Components/SideBar Pages/RegisterCompany';
-import RegisteredCompanies from './Components/Dashboard/Components/SideBar Pages/RegisteredCompanies';
-import TransactionsPage from './Components/Dashboard/Components/SideBar Pages/TransactionsPages'; // Adjust the import path
-import CustomersPage from './Components/Dashboard/Components/SideBar Pages/CustomersPage';
-import GmailNotification from './Components/Dashboard/Components/Body Section/Top Section/GmailNotifications';
-import Activity from './Components/Dashboard/Components/Body Section/Activity Section/Activity';
+import Register from './Components/UserFolder/Register/Register';
+import UserPage from './Components/UserFolder/Register/User Section/UserPage'; // Adjust the path as necessary
+import RegisterCompany from './Components/AdminFolder/Components/SideBar Pages/RegisterCompany';
+import RegisteredCompanies from './Components/AdminFolder/Components/SideBar Pages/RegisteredCompanies';
+import TransactionsPage from './Components/AdminFolder/Components/SideBar Pages/TransactionsPages'; // Adjust the import path
+import CustomersPage from './Components/AdminFolder/Components/SideBar Pages/CustomersPage';
+import GmailNotification from './Components/AdminFolder/Components/Body Section/Top Section/GmailNotifications';
+import Activity from './Components/AdminFolder/Components/Body Section/Activity Section/Activity';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { FileProvider } from './Components/Register/User Section/Functions/FileContext'; // Adjust the path as necessary
-import OtpForm from './Components/ForgotPassword/OtpForm';
-import ResetPassword from './Components/ForgotPassword/ResetPassword';
+import { FileProvider } from './Components/UserFolder/Register/User Section/Functions/FileContext'; // Adjust the path as necessary
+import OtpForm from './Components/UserFolder/ForgotPassword/OtpForm';
+import ResetPassword from './Components/UserFolder/ForgotPassword/ResetPassword';
+import LandingPage from './Components/Main/LandingPage';
 
 // Create the router
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <LandingPage />
+  },
+  {
+    path: '/login',
     element: <Login />
   },
   {
@@ -27,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard />
+    element: <AdminDashboard />
   },
   {
     path: '/user-page/*', // Use a wildcard to handle nested routes

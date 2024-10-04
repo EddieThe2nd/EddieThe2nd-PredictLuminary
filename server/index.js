@@ -569,27 +569,25 @@ const checkAndUpdateExpiredSubscriptions = () => {
 setInterval(checkAndUpdateExpiredSubscriptions, 60 * 1000); // Runs every 60 seconds (1 minute)
 
 // Endpoint to check if entity number exists
-// Temporary endpoint to check entity number
-app.post('/check-entity', (req, res) => {
-    const { entityNumber } = req.body;
+app.post('/api/check-entity', (req, res) => {
+    const entityNumber = req.body.entityNumber;
+    console.log('Checking if entity number exists:', { entityNumber });
+    const query = 'SELECT * FROM users_insurance WHERE entityNumber = ?';
 
-    // Check if the entity number exists in the registeringcompanies table
-    const checkEntitySQL = 'SELECT * FROM registeringcompanies WHERE entityNumber = ?';
-    db.query(checkEntitySQL, [entityNumber], (err, results) => {
+    db.query(query, [entityNumber], (err, results) => {
         if (err) {
-            console.error('Database error during entity check:', err);
-            return res.status(500).send({ error: 'Database query error' });
+            console.error('Error checking entity number:', err);
+            res.status(500).send({ error: 'Database error' });
+        } else if (results.length > 0) {
+            console.log('Found entity number:', { entityNumber });
+            res.send({ exists: true, email: results[0].email }); // Sending email associated with entityNumber
+        } else {
+            console.log('Cannot find entity number:', { entityNumber });
+            res.send({ exists: false });
         }
-
-        if (results.length === 0) {
-            // Entity number does not exist
-            return res.status(400).send({ success: false, message: 'Entity number does not exist' });
-        }
-
-        // Entity number exists
-        res.send({ success: true, message: 'Entity number exists' });
     });
 });
+
 
 
 
