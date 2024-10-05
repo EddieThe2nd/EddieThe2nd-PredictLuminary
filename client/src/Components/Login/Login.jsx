@@ -30,7 +30,7 @@ const Login = () => {
             }
         } else {
             setLoginStatus('Invalid entity number or password');
-            setTimeout(() => navigateTo('/'), 4000);
+            setTimeout(() => navigateTo('/login'), 4000);
         }
     } catch (error) {
         setLoginStatus('Network error, please try again later.');
@@ -56,9 +56,9 @@ const Login = () => {
       </div>
       <div className="right-section">
         <div className="signin-box">
-          <h2>SIGN IN</h2>
+          <h3 className="sign-in-title" >SIGN IN</h3>
           <p>
-            Don't have an account? <Link to="/register">Create a new account now!</Link> Takes less than a minute.
+            Don't have an account? <Link to="/register">Create account!</Link> 
           </p>
           <form className="signin-form" onSubmit={loginUser}>
             <div className="input-group">
@@ -83,7 +83,8 @@ const Login = () => {
             </div>
             <button type="submit" className="signin-button">Login Now</button>
             <div className="forgot-password">
-              <Link to="/OtpForm">Forgot password? Click here</Link>
+              <h4>forgot password? <Link to="/OtpForm">Click here</Link></h4>
+             
             </div>
           </form>
         </div>

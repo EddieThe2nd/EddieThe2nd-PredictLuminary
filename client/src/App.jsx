@@ -15,6 +15,7 @@ import { FileProvider } from './Components/UserFolder/Register/User Section/Func
 import OtpForm from './Components/UserFolder/ForgotPassword/OtpForm';
 import ResetPassword from './Components/UserFolder/ForgotPassword/ResetPassword';
 import LandingPage from './Components/Main/LandingPage';
+import About from './Components/UserFolder/Register/User Section/Pages/About';
 
 // Create the router
 const router = createBrowserRouter([
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
     path: '/ResetPassword',
     element: <ResetPassword />
   },
+  {
+    path: '/About',
+    element: <About />
+  },
+  
   
  
 ]);

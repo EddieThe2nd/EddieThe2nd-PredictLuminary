@@ -1,39 +1,57 @@
+body{
+    background-color: #dbe7f1;
+    
+}
 .MailContainer {
-    margin: 0;
-    padding: 20px;
-    background-color: #f0f0f0;
+    margin: 0; /* Reset margins */
+    padding: 30px; /* Increased padding for more breathing room */
+    background: linear-gradient(135deg, #18303e, #073763); /* Gradient for modern look */
     position: absolute;
-    bottom: 270px;
-    right: 250px;
-    transform: translate(-50%, 50%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 300px;
+    bottom: 100px; /* Lowered the position on the screen */
+    left: 60%; /* Center the container horizontally */
+    transform: translateX(-50%); /* Fixes the horizontal centering */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    border-radius:60px; /* Slightly rounded corners */
+    width: 100%; /* Makes it fill the majority of the screen */
+    max-width: 1200px; /* Adds a max width for large screens */
     box-sizing: border-box;
     text-align: center;
+    backdrop-filter: blur(10px); /* Adds the glassmorphism effect */
+    color: white; /* Ensure text color is legible */
+    height: 550px;
+   
+}
 
+
+.contact-us{
+    text-align: center;
 }
 
 .MailContainer h2 {
     margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    color:#dbe7f1;
+  
 }
 
 .MailContainer p {
     margin-bottom: 20px;
     font-size: 14px;
-    color: #333;
+    color:#31a2f2; /* Darker gray for better readability */
+  
 }
 
 .MailContainer form {
     display: flex;
     flex-direction: column;
     align-items: center;
+   
 }
 
 .MailContainer label {
     margin-top: 10px;
     font-size: 14px;
-    color: #333;
+    color:#dbe7f1;
     width: 100%;
     text-align: left;
 }
@@ -43,16 +61,30 @@
 .MailContainer textarea {
     margin-top: 5px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid grey;
+    border-radius: 35px;
     font-size: 14px;
     width: 100%;
     box-sizing: border-box;
+    transition: all 0.3s ease; /* Smooth transition for focus */
+    background: white; /* White background for inputs */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for input fields */
+
+}
+
+
+.MailContainer input[type="text"]:focus,
+.MailContainer input[type="email"]:focus,
+.MailContainer textarea:focus {
+    outline: none; /* Remove default outline */
+    border-color:#4CAF50; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Glow effect on focus */
 }
 
 .MailContainer textarea {
     resize: vertical;
     height: 100px;
+   
 }
 
 .MailContainer input[type="submit"] {
@@ -64,10 +96,12 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover */
 }
 
 .MailContainer input[type="submit"]:hover {
     background-color: #45a049;
+    transform: translateY(-2px); /* Lift effect on hover */
 }
 
 .error {
@@ -77,8 +111,31 @@
 }
 
 .success {
-    color: green;
+    color: #f3f6f3;
     margin-bottom: 15px;
-    font-size: 14px;
-    animation: fadeInOut 3s ease-in-out;
+    font-size: 20px;
+    animation: fade InOut  ease-in-out;
+}
+
+.send-emailbtn{
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+    font-weight: bold;
+    font-size: large !important;
+    margin-top: 20px;
+    
+    
+    
+}
+/* Keyframes for success message fade in/out */
+@keyframes fadeInOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

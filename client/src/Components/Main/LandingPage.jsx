@@ -29,7 +29,8 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      <div className="header">
+      
+      <div className="landing-header">
         <div className="logo">SmartSaleAi</div>
         
       </div>
@@ -42,19 +43,19 @@ const LandingPage = () => {
 
       <div className="floating-elements">
         <div className="floating-element element-1">
-          <FontAwesomeIcon icon={faPhone} size="2x" />
+          <FontAwesomeIcon icon={faPhone} size="1x" />
         </div>
         <div className="floating-element element-2">
-          <FontAwesomeIcon icon={faClipboardCheck} size="3x" />
+          <FontAwesomeIcon icon={faClipboardCheck} size="2x" />
         </div>
         <div className="floating-element element-3">
-          <FontAwesomeIcon icon={faChartLine} size="2x" /> {/* Sales metrics icon */}
+          <FontAwesomeIcon icon={faChartLine} size="1x" /> {/* Sales metrics icon */}
         </div>
         <div className="floating-element element-4">
-          <FontAwesomeIcon icon={faUser} size="2x" />
+          <FontAwesomeIcon icon={faUser} size="1x" />
         </div>
         <div className="floating-element element-5">
-          <FontAwesomeIcon icon={faRobot} size="6x" /> {/* Checklist icon */}
+          <FontAwesomeIcon icon={faRobot} size="2x" /> {/* Checklist icon */}
         </div>
       </div>
     </div>

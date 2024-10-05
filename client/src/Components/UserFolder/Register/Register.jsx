@@ -94,7 +94,7 @@ const Register = () => {
     return (
         <div className="register-container">
             <div className="top-bar">
-                <h2 className="top-bar-title">SmartSaleAI</h2>
+                <h2 className="top-bar-title">Smart Sale AI</h2>
                 <button className="back-button" onClick={handleLoginClick}>Login</button>
             </div>
             <div className="register-card">

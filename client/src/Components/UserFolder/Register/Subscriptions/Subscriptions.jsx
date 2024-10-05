@@ -126,21 +126,18 @@ const Subscriptions = () => {
   };
 
   return (
-    <div className="sub-container">
-      {hasActiveSubscription && (
-        <p style={{ color: 'red', fontWeight: 'bold', marginBottom: '20px' }}>
-          You currently have an active subscription and cannot purchase a new one until it expires.
-        </p>
-      )}
+    <div className="sub-container">   
 
-      <h2>Select a Subscription Plan</h2>
-      <p>Please choose one of the subscription plans below:</p>
+    <h2>Select a Subscription Plan</h2>
+    <p className="subscrip-sub">Please choose one of the subscription plans below:</p>
 
+    {/* New container for subscription plans */}
+    <div className="subscription-plans">
       {subscriptionPlans.map((plan) => (
         <div key={plan.id} className="subscription-plan">
-          <h3>{plan.name}</h3>
+          <h3 className="plan-name">{plan.name}</h3>
           <p>{plan.description}</p>
-          <p>Price: R{plan.price.toFixed(2)}</p>
+          <p className="pricebtn">Price: R{plan.price.toFixed(2)}</p>
           <button
             className={`select-plan-btn ${selectedPlan === plan.id ? 'selected' : ''}`}
             onClick={() => handlePlanSelect(plan.id)}
@@ -150,15 +147,21 @@ const Subscriptions = () => {
           </button>
         </div>
       ))}
-
-      {selectedPlan && !hasActiveSubscription && (
-        <PaystackButton
-          className="submit-btn"
-          {...paystackConfig}
-          text={`Pay for ${planName}`}
-        />
-      )}
+      {hasActiveSubscription && (
+      <p  className="bottom-text" style={{ color: 'red', fontWeight: 'bold', marginBottom: '20px' }}>
+        You currently have an active subscription and cannot purchase a new one until it expires.
+      </p>
+    )}
     </div>
+
+    {selectedPlan && !hasActiveSubscription && (
+      <PaystackButton
+        className="submit-btn"
+        {...paystackConfig}
+        text={`Pay for ${planName}`}
+      />
+    )}
+  </div>
   );
 };
 

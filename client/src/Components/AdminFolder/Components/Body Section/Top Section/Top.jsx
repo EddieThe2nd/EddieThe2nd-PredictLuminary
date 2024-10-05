@@ -17,7 +17,7 @@ const Top = () => {
           <h1>Welcome to Smart Sale AI</h1>
           <p>Hello Admin, Welcome back!</p>
         </div>
-
+       
        
 
         <div className="adminDiv flex">
@@ -27,6 +27,7 @@ const Top = () => {
 
     
     </div>
+        
   );
 }
 

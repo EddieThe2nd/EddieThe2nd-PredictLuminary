@@ -1,0 +1,118 @@
+.analytics-container {
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    width: 60vw;
+    left: 310PX;
+
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+   
+}
+
+.widget {
+    background: white;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    height: 280px;
+    width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Added transition for smooth resizing */
+}
+
+
+.widget h3 {
+    color: #444;
+}
+
+.conversion-widget {
+    background-color: #e8f5e9;
+}
+
+.prediction-widget {
+    background-color: #e3f2fd;
+}
+
+.feature-widget {
+    background-color: #fff3e0;
+}
+
+.alert-widget {
+    background-color: #ffe0b2;
+}
+
+button {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+.customization-menu {
+   
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    right: 50px;
+}
+
+.customization-menu select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* .full-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 400px;
+    background-color: #f5f5f5;
+} */
+
+.reset-button {
+    margin-top: 20px;
+    background-color: #d32f2f;
+}
+
+.reset-button:hover {
+    background-color: #b71c1c;
+}
+
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: repeat(1, 1fr); /* Stack widgets in a single column */
+    }
+
+    .widget {
+        padding: 1px; /* Reduce padding for smaller widgets */
+        margin: 1px; /* Reduce margin for smaller widgets */
+        transform: scale(0.9); /* Slightly reduce size */
+    }
+
+    button {
+        font-size: 12px; /* Smaller button text */
+        padding: 8px; /* Smaller button padding */
+    }
+
+    .customization-menu select {
+        font-size: 14px; /* Smaller select text */
+    }
+}

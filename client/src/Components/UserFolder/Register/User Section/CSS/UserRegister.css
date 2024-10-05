@@ -22,15 +22,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 4, 11, 0.589); /* Dark semi-transparent overlay */
+    background: rgba(0, 4, 11, 0.365); /* Dark semi-transparent overlay */
     z-index: 1;
 }
 
 /* Top bar styling */
 .top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
+   
+    margin-bottom: 180px;
     width: 100%;
     background-color: #08243565; /* Top bar background */
     padding: 20px 20px; /* Adjust padding as needed */
@@ -44,6 +43,8 @@
     color: #ffffff;
     font-size: 24px;
     font-weight: 500;
+    display: flex;
+    float: left;
 }
 
 /* Back button styling */

@@ -5,67 +5,127 @@
 
 .sidebar {
   width: 290px;
-  background-color: #2C3E50;
+  background-color: #18303e;
   color: #fff;
-  position: absolute;
-  right: 1059px;
-  top: 65px;
-  height: 100%;
+  position: fixed; /* Sidebar stays in place */
+  height: 100%; /* Full height */
 }
 
-.sidebar nav ul {
+.userPage-logo {
+  width: 300px;
+  height: auto;
+ position: relative;
+ right: 30px;
+ bottom: 20px;
+}
+
+.powered-title{
+
+font-size: 45px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+width: 520px;
+text-align: center;
+font-weight: 600; /* Slightly bolder for emphasis */
+letter-spacing: 1px; /* Add space between letters for elegance */
+line-height: 1.3; /* Improves readability */
+text-transform: uppercase; /* Makes it more impactful */
+background: linear-gradient(90deg, #073763, #1ABC9C); /* Gradient background for depth */
+-webkit-background-clip: text; /* Clips the background to the text */
+color: transparent; /* Makes the text color transparent to show the gradient */
+box-shadow: 0 4px 8px rgba(4, 65, 118, 0.2); /* Adds a soft shadow for depth */
+border-radius: 10px; /* Rounds the corners slightly */
+padding: 10px; /* Adds some padding for better spacing */
+
+
+}
+
+.logo-name {
+  color: white;
+  position: relative;
+  bottom: 120px;
+  right: 30px;
+  font-weight: 700;
+  font-size: x-large;
+}
+
+.userPageSideNav {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  font-size: large;
+  padding-left: 40px;
+}
+
+.userPageSideNav a:hover {
+  color: #f36a46;
 }
 
 .sidebar nav ul li {
   padding: 15px;
+  padding-bottom: 40px;
+  margin-bottom: 35px;
+  position:relative;
+  bottom: 80px;
+
 }
 
 .sidebar nav ul li a {
   color: #fff;
   text-decoration: none;
-  display: flex;
-  align-items: center;
 }
 
 .sidebar nav ul li a i {
   margin-right: 10px;
+  
 }
 
 .main-content {
   flex: 1;
+  margin-left: 290px; /* Prevent overlap */
   display: flex;
   flex-direction: column;
+ 
 }
 
 .header {
-  background-color: #2C3E50;
+  background-color: #18303e;
   color: #fff;
-  padding: 15px;
+  padding: 70px;
   display: flex;
   justify-content: flex-end;
-  position: absolute;
-  bottom: 500px;
+  position: fixed; /* Fix header */
+  top: 0; /* Adjust as needed */
+  left: 290px;
+  right: 0;
   height: 70px;
-  width: 1000px;
+  z-index: 1000; /* Above other elements */
+  font-size: larger;
 }
+.logout-button{
+  font-weight: 700;
+  font-size: large;
+  position: relative;
+  bottom: 20px;
+
+}
+
+.logout-button:hover{
+  background-color: #073763;
+  border-radius: 20px;
+}
+
 
 .header nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  position: relative;
-  left: 900px;
+  font-size: x-large;
 }
 
 .header nav ul li {
-  margin-left: 20px;
+  font-size: x-large;
+  margin-left: 50px;
 }
 
-.header nav ul li a, .header nav ul li button {
+.header nav ul li a,
+.header nav ul li button {
   color: #fff;
   text-decoration: none;
   background: none;
@@ -77,29 +137,82 @@
   display: flex;
   flex: 1;
   padding: 20px;
+  margin-top: 70px; /* Avoid header overlap */
 }
 
-.left-panel, .right-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ccc;
-  margin: 10px;
-  padding: 20px;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly lower */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
 }
 
-.left-panel img, .right-panel img {
-  max-width: 100%;
-  height: auto;
+.graphics-image {
+  position: relative;
+  left: 765px;
+  top: 300px;
+ 
+  width: 500px; /* Set width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 160px; /* Softens corners for a smoother look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds depth */
+
 }
 
-.add-file-button {
-  padding: 10px 20px;
-  background-color: #1ABC9C;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
+/* Modified Hover Effect */
+.graphics-image:hover {
+  transform: scale(0.1s ease-in-out)  translateY(-15px); /* Slight rotation and upward movement */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Increased shadow depth */
+}
+
+.graphics-and-tips {
+ 
+  position: relative;
+  bottom: 200px;
+  margin-left: 80px;
+  padding: 40px;
+ 
+  
+}
+
+h5{
+padding-bottom: 50px;
+position: relative;
+bottom: 70px;
+color: #073763;
+font-weight:bolder;
+}
+
+.graphics-container {
+  text-align: center; /* Center text and image */
+}
+
+.tips-container {
+ position: relative;
+ bottom: 55px;
+  height: 352px;
+  text-align: left;
+  background-color: #c9dbeb; /* Light background shade for tips */
+  padding: 30px; /* Padding for better spacing */
+  border-radius: 20px; /* Soft corners for tips container */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+
+.tips-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-family: sans-serif;
+  font-size: large;
+  font-weight: 100;
+  line-height: 60px;
+}
+
+.tips-container h3 {
+  margin-bottom: 10px;
+ 
 }

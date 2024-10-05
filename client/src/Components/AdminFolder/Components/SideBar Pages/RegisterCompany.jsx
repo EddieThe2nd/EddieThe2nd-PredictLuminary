@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './SideBar-CSS/RegisterCompany.css'; // Import the CSS file for styling
 
 // Imported video
-import video from '../../../../LoginAssets/futuristic.mp4';
+import photo from '../../../../LoginAssets/agreement.jpeg';
 
 const RegisterCompany = () => {
   const [formData, setFormData] = useState({
@@ -80,16 +80,15 @@ const RegisterCompany = () => {
 
   return (
     <div className="register-company-container">
-      <video autoPlay loop muted className="background-video">
-        <source src={video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      
+        <img src={photo} alt=""  className="background-image"/>
+     
       <div className="form-wrapper">
         <h1>Register Company</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="companyName">Company Name:</label>
-            <input
+            <input className='register-input'
               type="text"
               id="companyName"
               name="companyName"
@@ -99,7 +98,7 @@ const RegisterCompany = () => {
           </div>
           <div className="form-group">
             <label htmlFor="contactPersonName">Contact Person Name:</label>
-            <input
+            <input className='register-input'
               type="text"
               id="contactPersonName"
               name="contactPersonName"
@@ -109,7 +108,7 @@ const RegisterCompany = () => {
           </div>
           <div className="form-group">
             <label htmlFor="contactPersonSurname">Contact Person Surname:</label>
-            <input
+            <input className='register-input'
               type="text"
               id="contactPersonSurname"
               name="contactPersonSurname"
@@ -119,7 +118,7 @@ const RegisterCompany = () => {
           </div>
           <div className="form-group">
             <label htmlFor="contactPersonNumber">Contact Person Number:</label>
-            <input
+            <input className='register-input'
               type="text"
               id="contactPersonNumber"
               name="contactPersonNumber"
@@ -129,7 +128,7 @@ const RegisterCompany = () => {
           </div>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
-            <input
+            <input className='register-input'
               type="email"
               id="email"
               name="email"
@@ -139,18 +138,18 @@ const RegisterCompany = () => {
           </div>
           <div className="form-group">
             <label htmlFor="entityNumber">Entity Number:</label>
-            <input
+            <input className='register-input'
               type="text"
               id="entityNumber"
               name="entityNumber"
               value={formData.entityNumber}
               readOnly
             />
-            <button type="button" onClick={generateEntityNumber}>
+            <button type="button" onClick={generateEntityNumber} className='generate-btn'>
               Generate Entity Number
             </button>
           </div>
-          <button type="submit" className="submit-button">Register</button>
+          <button type="submit" className="register-btn">Register</button>
         </form>
       </div>
     </div>

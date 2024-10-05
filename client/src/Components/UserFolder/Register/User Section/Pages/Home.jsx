@@ -127,7 +127,7 @@ function Home() {
   return (
     <div className='HomeContainer'>
       <div className='LeftSide'>
-        <img className='logo_img' src={logo2} alt="Logo"/>
+        
       </div>
       <div className='RightSide'>
         <div className='btnContainer'>
@@ -149,7 +149,7 @@ function Home() {
             cursor: subscriptionStatus === 'inactive' ? 'not-allowed' : 'pointer',
             opacity: subscriptionStatus === 'inactive' ? 0.5 : 1 
           }}
-          >Add a file</button>
+          >Upload a file </button>
           <input 
             type="file"
             ref={fileInputRef}

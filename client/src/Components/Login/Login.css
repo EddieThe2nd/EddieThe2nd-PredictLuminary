@@ -1,24 +1,24 @@
-.main-containoLog{
+.main-containoLog {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url('../../LoginAssets/signInback.gif');
   background-repeat: no-repeat;
-  image-rendering:optimizeQuality; 
+  image-rendering: optimizeQuality;
   background-size: cover;
+  box-shadow: inset 0 0 15px rgba(6, 47, 108, 0.5); /* Shadow on the background image edges */
 }
-
 
 .signin-container {
   display: flex;
   flex-direction: row;
-  height: 70vh;
+  height: 80vh;
   width: 70vw;
-  background-color: #dfdfdfe3;
+  background-color: transparent;
   border-radius: 30px; /* Rounded corners */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), /* Original shadow */
-              0 15px 35px rgba(0, 0, 0, 0.15); /* Additional shadow for more depth */
+  box-shadow: 0 10px 30px rgba(13, 65, 177, 0.3), /* Original shadow */
+              0 15px 35px rgba(13, 54, 95, 0.15); /* Additional shadow for more depth */
   transform: translateY(-20px); /* Move the sections up slightly */
   overflow: hidden; /* Ensure rounded corners are applied properly */
   margin-bottom: 50px;
@@ -65,12 +65,12 @@
 }
 
 .signin-box {
-  background-color: transparent; /* Darker background */
-  padding: 30px;
+  background-color:transparent;
+  padding: 60px;
   border-radius: 50px; /* Make the form oval */
   box-shadow: 0 10px 30px rgba(25, 39, 54, 0.3); /* 3D shadow effect */
-  width: 100%;
-  max-width: 400px;
+  width: 560px;
+  margin-bottom: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-clip: padding-box; /* Ensures background color is clipped within the shape */
   position: relative; /* Ensures proper layout of content */
@@ -82,10 +82,10 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
 }
 
-h2 {
+.signin-box h2{
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #325870 ; /* White text for contrast */
+  color:#073763; /* White text for contrast */
   text-align: center;
   
 }
@@ -93,11 +93,14 @@ h2 {
 p {
   font-size: 1rem;
   margin-bottom: 30px;
-  color:rgb(52, 51, 51); /* Subtle text color */
+  color:#073763; /* Subtle text color */
+  text-align: center;
+  font-weight: 500;
 }
 
 a {
-  color: #dc6211;
+  color:  #f36a46;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -105,12 +108,9 @@ a:hover {
   color: #ff5722;
 }
 
-.signin-form {
-  width: 100%;
-}
 
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
@@ -118,48 +118,55 @@ a:hover {
   width: 100%;
   padding: 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: transparent; /* Darker input fields */
- 
-  font-size: 1rem;
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.15); /* Inner shadow for depth */
+ font-size:medium;
+  box-shadow: inset 0 4px 8px rgba(5, 29, 44, 0.15); /* Inner shadow for depth */
   transition: background-color 0.3s ease;
 }
 
-.input-field:focus {
-  background-color: #fdf8f8; /* Lighter background on focus */
-  outline: none;
-}
+
 
 .signin-button {
   width: 100%;
   padding: 15px;
   border: none;
-  border-radius: 8px;
-  background-color:  #325870;
+  border-radius:18px;
+  background-color:#687b92;
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+  box-shadow: 0 4px 8px #37506f  ; /* 3D shadow effect */
 }
-
 .signin-button:hover {
-  background-color: #288c82;
-  transform: scale(1.05); /* Slight scale on hover */
-}
+  
+  background-color: #073763 !important; /* Make sure the color you want is applied */
+  transform: scale(1.00);
+ }
+
+
 
 
 
 .forgot-password {
   margin-top: 20px;
   text-align: center;
+  color: #f36a46;
+  font-weight: bold;
   
 }
+.sign-in-title{
+  color: #073763;
+  font-size: xx-large;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
-.forgot-password a {
-  color: #ff7315;
+h4{
+  color: #073763;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
@@ -173,6 +180,6 @@ a:hover {
   }
 
   .right-section {
-    background: none;
+    background:transparent;
   }
 } 

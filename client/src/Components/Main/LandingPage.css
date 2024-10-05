@@ -24,9 +24,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #1f1f3a, #0b0c10);
+    background: radial-gradient(circle at center,#18303e, #0b0c10);
     overflow: hidden;
-    border-radius: 30px; /* Soft rounded corners for depth */
+    border-radius: 0px; /* Soft rounded corners for depth */
+    color: white;
     
     /* Adding depth with shadows */
     box-shadow: 
@@ -36,14 +37,24 @@
 }
 
 /* Header section */
-.header {
+.landing-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
     position: absolute;
     top: 0;
-    padding: 20px 50px;
+    padding: 20px 60px;
+    height: 100px;
+    background: linear-gradient(to bottom, #18303e 0%, rgba(24, 48, 62, 0.8) 50%, rgba(11, 12, 16, 0.9) 100%);
+    color: white;
+    z-index: 10; /* Ensure header stays above other elements */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3); /* Enhanced 3D shadow */
 }
+
+
+
+
+
 
 /* Logo */
 .logo {
@@ -52,6 +63,8 @@
     color: #31a2f2;
     letter-spacing: 4px;
     text-transform: unset;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 /* Get Started Button */
@@ -66,9 +79,6 @@
     transition: background 0.3s ease;
 }
 
-.get-started-button:hover {
-    background-color: #2091d4;
-}
 
 /* Hero Section */
 .hero-section {
@@ -92,20 +102,23 @@
 }
 
 .cta-button {
-    padding: 15px 35px;
+    padding: 15px 65px;
     background-color: #ff7315;
     color: white;
     border: none;
     border-radius: 50px;
     font-size: 1.2rem;
+    width: 60px;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
+  
 }
 
 .cta-button:hover {
-    background-color: #ff5722;
+    background-color: #31a2f2;
     transform: scale(1.05);
+    color: white;
 }
 
 /* Floating elements for dynamic interaction */
@@ -133,21 +146,21 @@
 .element-1 {
     width: 120px;
     height: 120px;
-    top: 10%;
-    left: 30%;
+    top: 15%;
+    left: 40%;
 }
 
 .element-2 {
     width: 200px;
     height: 200px;
-    top: 40%;
-    left: 70%;
+    top: 20%;
+    left: 80%;
 }
 
 .element-3 {
-    width: 80px;
-    height: 80px;
-    top: 80%;
+    width: 100px;
+    height: 100px;
+    top: 60%;
     left: 20%;
 }
 
@@ -159,10 +172,10 @@
 }
 
 .element-5 {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     top: 60%;
-    left: 50%;
+    left: 65%;
 }
 
 /* Make sure icons are centered */

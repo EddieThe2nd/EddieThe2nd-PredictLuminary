@@ -1,6 +1,6 @@
 /* top.css */
 .topSection {
-    background-color: #1f1d2b;
+     background: radial-gradient(circle at center,#18303e, #0b0c10);
     padding: 1.5rem;
     color: #fff;
 }

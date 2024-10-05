@@ -39,20 +39,22 @@ function Mail() {
   };
 
   return (
+    <div className='backround-div'>
     <div className='MailContainer'>
-      <h2>Contact Us</h2>
-      <p>If you would like to deactivate your account or report any bugs, please send us an email using the form below:</p>
+      <h1 className="contactus"> CONTACT US</h1>
+      <p>Please send us an email using the form below for any enquires and and support:</p>
       {error && <p className="error">{error}</p>}
       {success && <p className="success">Email sent successfully!</p>}
       <form ref={form} onSubmit={sendEmail}>
-        <label>Username</label>
+        <label>Entity Number</label>
         <input type="text" name="user_name" required />
         <label>Enter your email</label>
         <input type="email" name="user_email" required />
         <label>Message</label>
         <textarea name="message" required />
-        <input type="submit" value="Send" />
+        <input className='send-emailbtn' type="submit" value="Send" />
       </form>
+    </div>
     </div>
   );
 }

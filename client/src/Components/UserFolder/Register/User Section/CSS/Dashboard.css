@@ -3,8 +3,9 @@
     padding: 20px; /* Added padding for inner content */
     position: absolute;
     top: 155px;
-    right: 250px;
-    width: 750px;
+    right: 0; /* Adjust to 0 for full width */
+    left: 10; /* Adjust to 0 for full width */
+    width: 80%; /* Set to full width */
     height: 80%;
     display: flex;
     flex-direction: column; /* Ensure content stacks vertically */
@@ -18,13 +19,33 @@ h1 {
     margin-bottom: 20px;
 }
 
-.BaseH1{
+.BaseH1 {
+    font-size: 45px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 190px; /* Added margin to separate from buttons */
+    margin-right: 180px;
+    color: #073763;
     text-align: center;
-    color: #d9534f;
-    background-color: #f2dede;
-    border: 1px solid #d9534f;
-    border-radius: 4px;
-    width: auto;
+
+    /* New Styles */
+    font-weight: 600; /* Slightly bolder for emphasis */
+    letter-spacing: 3px; /* Add space between letters for elegance */
+    line-height: 1.7; /* Improves readability */
+    text-transform: uppercase; /* Makes it more impactful */
+    background: linear-gradient(90deg, #073763, #1ABC9C); /* Initial gradient background */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    color: transparent; /* Makes the text color transparent to show the gradient */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a soft shadow for depth */
+    border-radius: 10px; /* Rounds the corners slightly */
+    padding: 10px; /* Adds some padding for better spacing */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease; /* Smooth transition for all effects */
+    display: inline-block;
+}
+
+/* Hover effect for zoom, shadow, and background change */
+.BaseH1:hover {
+    transform: scale(1.05); /* Slightly larger zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Stronger shadow for emphasis */
 }
 
 /* Error message styling */
@@ -72,44 +93,49 @@ input[type="email"]:disabled {
 
 /* Loading state */
 .loading {
-    color: #5bc0de; 
+    color: #18303e; 
+    font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
     font-style: italic; /* Added italic style for loading */
 }
 
 /* Button styling */
-button {
-    background-color: #007bff; 
+.loading-btn {
+    background-color: #073763; 
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 15px 45px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
+    font-size: 20px;   
     transition: background-color 0.3s;
+    position: relative;
+    left: 10px;
+    top: 170px;
 }
 
-button:disabled {
-    background-color: #6c757d; /* Bootstrap's secondary color */
+.loading-btn:disabled {
+    background-color: #f36a46;
     cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
-    background-color: #0056b3;
+.loading-btn:hover:not(:disabled) {
+    background-color: rgb(162, 161, 161);
 }
 
 /* Table styling */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed; /* Ensure consistent column width */
+    width: 100%; /* Use full width of the container */
+    border-collapse: collapse; /* Collapse borders for better spacing */
+    margin-top: 5px;
+    table-layout: auto; /* Allow for automatic column width adjustment */
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #111112;
+    border-radius: 10px;
+    background-color: transparent;
 }
 
 th, td {
@@ -117,6 +143,7 @@ th, td {
     text-align: left;
     overflow: hidden; /* Hide overflow content */
     text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 th {
@@ -129,4 +156,9 @@ pre {
     border-radius: 4px;
     overflow-x: auto;
     white-space: pre-wrap; /* Preserve formatting */
+}
+
+.resultslabel {
+    position: relative;
+    left: 400px;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './sidebar.css'; // Import your CSS file here
+import logo2 from '../../../../LoginAssets/transHeadLogo.png'
 
 // Imported Images
 //import  from './../../Assets/logo.jpg';
-import logo from './../../Assets/logosolid.jpeg';
+//import logo from './../../Assets/transHeadlog.png';
 // Imported icons
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining } from "react-icons/md";
@@ -26,14 +27,14 @@ const Sidebar = () => {
     localStorage.removeItem('authToken'); // Example for clearing auth token from localStorage
 
     // Redirect to the login page
-    navigate('/login');
+    navigate('/');
   };
 
   return (
     <div className='sideBar grid'>
       <div className="logoDiv flex">
-        <img src={logo} alt="Logo" />
-        <h2>SmartSale AI</h2>
+        <img src={logo2} alt="Logo" />
+        <h3>SmartSale AI</h3>
       </div>
 
       <div className="menuDiv">

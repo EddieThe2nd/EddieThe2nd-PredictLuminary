@@ -1,36 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root {
-  --primaryColor: hsl(94, 55%, 56%);
-  --hoverColor: hsl(93, 75%, 76%);
-  --paleGreen: hsl(96, 75%, 89%);
-  --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(0, 0%, 18%);
-  --greyText: hsl(0, 0%, 75%);
-  --bgColor: hsl(113, 11%, 85%);
-  --inputColor: hsl(330, 12%, 97%);
-  --biggestFontSize: 2.5rem;
-  --h1FontSize: 1.5rem;
-  --h2FontSize: 1.25rem;
-  --h3FontSize: 1rem;
-  --normalFontSize: 0.938rem;
-  --smallFontSize: 0.813rem;
-  --smallestFontSize: 0.75rem;
-}
-
-.register-company-container, .register-company-container * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
+/* RegisterCompany.css */
 .register-company-container {
-  height: 100%;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dbe7f1; /* Dark overlay */
+  font-family: 'Poppins', sans-serif;
+  
 }
 
-.register-company-container .background-video {
-  position: fixed;
+.background-video {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -39,65 +20,108 @@
   z-index: -1;
 }
 
-.register-company-container .form-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.8);
-  padding: 30px;
+.form-wrapper {
+  position: relative; /* Ensures the form content stays on top of the background image */
+  z-index: 1;
+  background: #dbe7f1; /* Glassmorphism effect */
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.register-company-container h1 {
-  text-align: center;
-  color: var(--blackColor);
-  font-size: var(--h1FontSize);
-  margin-bottom: 20px;
-}
-
-.register-company-container .form-group {
-  margin-bottom: 15px;
-}
-
-.register-company-container label {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--blackColor);
-  font-size: var(--normalFontSize);
-}
-
-.register-company-container input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  border: 1px solid var(--greyText);
-  border-radius: 5px;
-  background: var(--inputColor);
-}
-
-.register-company-container button {
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(10px); 
+  max-width: 500px;
   width: 100%;
-  padding: 10px;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  border-radius: 78px;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire area */
+  z-index: -2; /* Sends the image behind the form */
+  opacity: 0.3; /* Fades the image */
+  filter: blur(2px); /* Optional: Adds a slight blur effect for more focus on the form */
+}
+
+
+.form-wrapper:hover {
+  transform: scale(1.05); /* Slight zoom-in effect on hover */
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #18303e;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  color: #18303e;
+  margin-bottom: 0.5rem;
+}
+
+.register-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: #dbe7f1; /* Transparent input fields */
+  color: #030303;
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.register-input:focus {
+  border-color: #18303e;
+  outline: none;
+  transform: scale(1.03); /* Slight scale effect on focus */
+}
+
+.generate-btn {
+  background-color: #18303e;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  background-color: var(--primaryColor);
-  color: var(--whiteColor);
-  font-size: var(--normalFontSize);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  width: 100%;
+  margin-top: 1rem;
 }
 
-.register-company-container button:hover {
-  background-color: var(--hoverColor);
-  color: var(--blackColor);
+button:hover {
+  background-color: #18303e;
+  transform: scale(1.05); /* Button enlarges slightly on hover */
 }
 
-.register-company-container .submit-button {
-  background-color: var(--primaryColor);
+.register-btn {
+  margin-top: 1.5rem;
+  background-color: #18303e;
 }
 
-.register-company-container .submit-button:hover {
-  background-color: var(--hoverColor);
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }

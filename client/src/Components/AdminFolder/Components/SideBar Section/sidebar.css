@@ -1,6 +1,6 @@
 /* sidebar.css */
 .sideBar {
-    background-color: #1f1d2b;
+    background: radial-gradient(circle at center,#18303e, #0b0c10);
     color: #fff;
     height: 100vh;
     width: 280px;
@@ -18,8 +18,8 @@
 }
 
 .logoDiv img {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
 }
 

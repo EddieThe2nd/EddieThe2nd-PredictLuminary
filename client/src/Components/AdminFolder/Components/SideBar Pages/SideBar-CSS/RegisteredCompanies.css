@@ -1,63 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root {
-  --primaryColor: hsl(94, 55%, 56%);
-  --hoverColor: hsl(93, 75%, 76%);
-  --paleGreen: hsl(96, 75%, 89%);
-  --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(0, 0%, 18%);
-  --greyText: hsl(0, 0%, 75%);
-  --bgColor: hsl(113, 11%, 85%);
-  --inputColor: hsl(330, 12%, 97%);
-  --biggestFontSize: 2.5rem;
-  --h1FontSize: 1.5rem;
-  --h2FontSize: 1.25rem;
-  --h3FontSize: 1rem;
-  --normalFontSize: 0.938rem;
-  --smallFontSize: 0.813rem;
-  --smallestFontSize: 0.75rem;
+.table-container{
+  background-color: #dbe7f1;
+  height:100vh;
 }
-
-.registered-companies-container, .registered-companies-container * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.registered-companies-container {
-  padding: 20px;
-}
-
-.registered-companies-container h2 {
-  color: var(--blackColor);
-  font-size: var(--h1FontSize);
-  margin-bottom: 20px;
-}
-
 .registered-companies-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--whiteColor);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Rounded corners for the table */
+  overflow: hidden; /* Prevent overflow of rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Table shadow */
+  background-color: transparent;
+  
 }
 
-.registered-companies-table th,
-.registered-companies-table td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid var(--greyText);
+.registered-companies-table tr {
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for background and scale */
 }
 
-.registered-companies-table th {
-  background-color: var(--primaryColor);
-  color: var(--whiteColor);
-}
-
-.registered-companies-table tr:nth-child(even) {
-  background-color: var(--paleGreen);
+.textColor{
+  color:#073763;
 }
 
 .registered-companies-table tr:hover {
-  background-color: var(--hoverColor);
+  background-color: rgba(0, 123, 255, 0.2); /* Slightly more transparent highlight on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.registered-companies-table th {
+  background: linear-gradient(to right, rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8)); /* Semi-transparent gradient for header */
+  color: white; /* Header text color */
+  font-weight: bold; /* Bold text for headers */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for header */
+}
+
+.dropdown-content {
+  display: block; /* Display dropdown items */
+  margin-top: 10px; /* Space above dropdown items */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for dropdown */
+  border-radius: 5px; /* Rounded corners for dropdown */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Deeper shadow for dropdown */
+  position: relative; /* Position relative to its container */
+  z-index: 1; /* Ensure dropdown is above other content */
+  transition: opacity 0.3s ease; /* Smooth appearance */
+}
+
+.dropdown-content:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow on hover for depth */
+}
+
+/* Style for dropdown items */
+.dropdown-content div {
+  padding: 10px 15px; /* Padding for dropdown items */
+  color: #333; /* Text color */
+  transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+.dropdown-content div:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Highlight item on hover */
+  border-radius: 5px; /* Rounded corners for dropdown items */
 }

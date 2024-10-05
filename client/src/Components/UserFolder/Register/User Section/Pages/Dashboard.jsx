@@ -111,7 +111,7 @@ function Dashboard() {
             {file && (
                 <div>
                     <p>Selected File: {file.name}</p>
-                    <button onClick={handleFileUpload} disabled={loading}>
+                    <button className="loading-btn" onClick={handleFileUpload} disabled={loading}>
                         {loading ? 'Processing...' : 'Download file'}
                     </button>
                 </div>
@@ -120,7 +120,7 @@ function Dashboard() {
             {error && <p className="error-message">{error}</p>}
             {top50Data.length > 0 && (
                 <div>
-                    <h2>Top 50 Results</h2>
+                    <h2 className="resultslabel">Top 50 Results</h2>
                     <table>
                         <thead>
                             <tr>

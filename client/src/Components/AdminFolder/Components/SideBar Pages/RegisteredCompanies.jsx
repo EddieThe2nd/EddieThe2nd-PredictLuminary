@@ -4,6 +4,7 @@ import '../SideBar Pages/SideBar-CSS/RegisteredCompanies.css'; // Import the CSS
 
 const RegisteredCompanies = () => {
     const [companies, setCompanies] = useState([]);
+    const [openDropdown, setOpenDropdown] = useState({}); // Track which dropdown is open
 
     useEffect(() => {
         fetchCompanies();
@@ -19,7 +20,15 @@ const RegisteredCompanies = () => {
         }
     };
 
+    const toggleDropdown = (index) => {
+        setOpenDropdown(prevState => ({
+            ...prevState,
+            [index]: !prevState[index],
+        }));
+    };
+
     return (
+        <div className="table-container">
         <div className="registered-companies-container">
             <h2>Registered Companies</h2>
             <table className="registered-companies-table">
@@ -39,19 +48,35 @@ const RegisteredCompanies = () => {
                             <td colSpan="6">No registered companies found.</td>
                         </tr>
                     ) : (
-                        companies.map((company) => (
-                            <tr key={company.id}>
-                                <td>{company.id}</td>
-                                <td>{company.companyName}</td>
-                                <td>{`${company.contactPersonName} ${company.contactPersonSurname}`}</td>
-                                <td>{company.contactPersonNumber}</td>
-                                <td>{company.email}</td>
-                                <td>{company.entityNumber}</td>
-                            </tr>
+                        companies.reduce((acc, company, index) => {
+                            // Group companies into sets of 5
+                            const groupIndex = Math.floor(index / 5);
+                            if (!acc[groupIndex]) {
+                                acc[groupIndex] = [];
+                            }
+                            acc[groupIndex].push(company);
+                            return acc;
+                        }, []).map((group, groupIndex) => (
+                            <React.Fragment key={groupIndex}>
+                                <tr onClick={() => toggleDropdown(groupIndex)} style={{ cursor: 'pointer' }}>
+                                    <td colSpan="6" className='textColor'>Show Companies {groupIndex * 5 + 1} to {Math.min((groupIndex + 1) * 5, companies.length)}</td>
+                                </tr>
+                                {openDropdown[groupIndex] && group.map((company) => (
+                                    <tr key={company.id} className='textColor'>
+                                        <td  className='textColor'>{company.id}</td>
+                                        <td className='textColor'>{company.companyName}</td>
+                                        <td className='textColor'>{`${company.contactPersonName} ${company.contactPersonSurname}`}</td>
+                                        <td className='textColor'>{company.contactPersonNumber}</td>
+                                        <td className='textColor'>{company.email}</td>
+                                        <td className='textColor'>{company.entityNumber}</td>
+                                    </tr>
+                                ))}
+                            </React.Fragment>
                         ))
                     )}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

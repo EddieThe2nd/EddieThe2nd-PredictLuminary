@@ -1,0 +1,80 @@
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 90vw;  
+  color: #fff;
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 40px;
+  width: 80%;
+  height: 75%;
+  position: relative;
+}
+
+.grid-section {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-section:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+  font-size: 1.8em;
+  margin-bottom: 12px;
+  background: linear-gradient(to right, #073763, #31a2f2);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+
+.section-description {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #092a42;
+}
+
+.section-icon {
+  font-size: 3em;
+  color: #f36a46;
+}
+
+.center-animation {
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.floating-element {
+  font-size: 4em;
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.floating-element:hover {
+  transform: scale(1.2) rotate(10deg);
+  color: #f4953b;
+}
