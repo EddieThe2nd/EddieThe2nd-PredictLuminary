@@ -1,0 +1,11 @@
+.recent-title{
+    position: relative;
+    left: 650px;
+}
+
+
+
+.activity-title{
+    background: linear-gradient(to right, #2d6293,#dbe7f1); 
+    color: white;
+}

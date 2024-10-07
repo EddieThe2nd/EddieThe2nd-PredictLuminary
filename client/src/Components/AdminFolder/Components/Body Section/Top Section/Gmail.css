@@ -5,6 +5,15 @@
     color: #007bff; 
 }
 
+.gmail-not{
+    position: relative;
+    left: 650px;
+    font-weight: 900;
+}
+
+.email-container{
+    background-color: #37506f;
+}
 
 /* Pop up container */
 .popup {
@@ -13,7 +22,8 @@
     left: 0; 
     width: 100%; 
     height: 100%; 
-    background-color: rgba(6, 155, 73, 0.5); 
+    background-color:#687b92; 
+    color: #0d335c;
     display: flex; 
     justify-content: center; 
     align-items: center;
@@ -36,30 +46,33 @@
     width: 100%; 
     border-collapse: collapse;
     margin-top: 20px; 
+    background-color: #37506f  ;
+    
 }
 
 /* Table header and cell styling */
 .email-table th, .email-table td {
-    border: 1px solid #ddd; 
+  
     padding: 10px; 
-    color: #074b0d;
+    color: white;
     
 }
 
 /* Table header styling */
 .email-table th {
-    background-color: #f2f2f2; 
+    background-color: #073763; 
     text-align: left; 
-    color: #81c0dd;
+    color:white;
 }
 
 /* Email item styling */
 .email-item {
-    background-color: #f9f9f9; 
+    background-color: #687b92; 
     margin-bottom: 10px; 
     padding: 15px; 
     border-radius: 5px; 
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
 /* Close button styling */

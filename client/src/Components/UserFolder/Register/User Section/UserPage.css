@@ -1,7 +1,12 @@
-.container {
+.user-container {
   display: flex;
   height: 100vh;
-}
+  width: 100vw;
+  background-color:white;
+  
+} 
+
+
 
 .sidebar {
   width: 290px;
@@ -20,12 +25,16 @@
 }
 
 .powered-title{
-
-font-size: 45px;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-width: 520px;
-text-align: center;
-font-weight: 600; /* Slightly bolder for emphasis */
+  position: relative;
+  bottom: 100px;
+  right: 100px;
+  margin-top: 200px;
+  margin-left: 100px;
+  font-size: 45px;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ width: 520px;
+ text-align: center;
+ font-weight: 600; /* Slightly bolder for emphasis */
 letter-spacing: 1px; /* Add space between letters for elegance */
 line-height: 1.3; /* Improves readability */
 text-transform: uppercase; /* Makes it more impactful */
@@ -35,6 +44,7 @@ color: transparent; /* Makes the text color transparent to show the gradient */
 box-shadow: 0 4px 8px rgba(4, 65, 118, 0.2); /* Adds a soft shadow for depth */
 border-radius: 10px; /* Rounds the corners slightly */
 padding: 10px; /* Adds some padding for better spacing */
+
 
 
 }
@@ -151,68 +161,59 @@ padding: 10px; /* Adds some padding for better spacing */
   }
 }
 
-.graphics-image {
-  position: relative;
-  left: 765px;
-  top: 300px;
- 
-  width: 500px; /* Set width */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 160px; /* Softens corners for a smoother look */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds depth */
 
-}
+.tools{
+  font-size: larger;
+  margin-top: 470px;
 
-/* Modified Hover Effect */
-.graphics-image:hover {
-  transform: scale(0.1s ease-in-out)  translateY(-15px); /* Slight rotation and upward movement */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Increased shadow depth */
-}
-
-.graphics-and-tips {
- 
-  position: relative;
-  bottom: 200px;
-  margin-left: 80px;
-  padding: 40px;
- 
-  
-}
-
-h5{
-padding-bottom: 50px;
 position: relative;
-bottom: 70px;
+bottom: 500px;
+right: 60px;
 color: #073763;
 font-weight:bolder;
 }
 
-.graphics-container {
-  text-align: center; /* Center text and image */
-}
+
 
 .tips-container {
  position: relative;
- bottom: 55px;
-  height: 352px;
-  text-align: left;
-  background-color: #c9dbeb; /* Light background shade for tips */
-  padding: 30px; /* Padding for better spacing */
-  border-radius: 20px; /* Soft corners for tips container */
+ bottom: 500px;
+ right: 80px;
+
+ height: 352px;
+ background-color: #c9dbeb; /* Light background shade for tips */
+  color: #073763;
+  padding: 180px; /* Padding for better spacing */
+  padding-left: 100px;
+  border-radius: 40px; /* Soft corners for tips container */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  margin-right: 30px;
+
 }
 
 
 .tips-container ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  font-family: sans-serif;
+  list-style-type: disc; 
   font-size: large;
-  font-weight: 100;
+  font-weight: 400;
   line-height: 60px;
+  position: relative;
+  bottom: 100px;
+
+  
 }
 
 .tips-container h3 {
-  margin-bottom: 10px;
- 
+    text-align:left;
+    position: relative;
+    bottom: 150px;
+
+}
+
+
+@media (max-width: 768px) {
+  .UserPageContainer {
+      width: 100%; /* Full width on smaller screens */
+      height: auto; /* Let it expand naturally */
+  }
 }

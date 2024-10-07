@@ -80,8 +80,8 @@ const GmailNotification = () => {
   };
 
   return (
-    <div>
-      <h2>SmartSalesAI Gmail Messages:</h2>
+    <div className="email-container">
+      <h2 className="gmail-not">Email Notifications</h2>
       <table className="email-table">
         <thead>
           <tr>

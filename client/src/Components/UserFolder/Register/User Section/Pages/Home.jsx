@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx'; // Import xlsx library for handling Excel files
 import '../../User Section/CSS/Home.css';
 import Axios from 'axios';
-//Importing Images
-// import logo from '../../../../../LoginAssets/logosolid.jpeg';
+import sales from '../../../../../LoginAssets/salesGraphics.jpg';
 import logo2 from '../../../../../LoginAssets/logosolidblack.png';
 
 function Home() {
@@ -125,12 +124,13 @@ function Home() {
   
 
   return (
-    <div className='HomeContainer'>
-      <div className='LeftSide'>
-        
-      </div>
+ 
       <div className='RightSide'>
-        <div className='btnContainer'>
+          <img
+                  src={sales} 
+                  alt="AI and Sales"
+                  className="graphics-image" // Applying the CSS class
+         />
           {/* <img className='logo_img2' src={logo} alt="Logo2"/> */}
           <h1 className='h1_letsGetStarted'>Let's get started</h1>
           {/* Conditional rendering based on subscription status */}
@@ -157,9 +157,9 @@ function Home() {
             onChange={HandleFile}
           />
           {errorMessage && <p className='errorMessage'>{errorMessage}</p>} {/* Display error message */}
-        </div>
+        
       </div>
-    </div>
+   
   );
 }
 

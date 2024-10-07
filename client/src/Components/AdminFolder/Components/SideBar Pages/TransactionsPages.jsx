@@ -49,7 +49,8 @@ const TransactionsPage = () => {
 
   return (
     <div>
-      <h2>Transactions Overview</h2>
+      <h2 className="transaction-title">Transactions Overview</h2>
+      <div className="trans-container">
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -57,6 +58,7 @@ const TransactionsPage = () => {
       ) : (
         <BarChartComponentWrapper data={data} />
       )}
+      </div>
     </div>
   );
 };

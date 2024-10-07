@@ -110,9 +110,9 @@ function Dashboard() {
             {!file && (<h1 className="BaseH1">Return to homepage and add a file</h1>)}
             {file && (
                 <div>
-                    <p>Selected File: {file.name}</p>
+                    <p className="selected-filebtn">Selected File: {file.name}</p>
                     <button className="loading-btn" onClick={handleFileUpload} disabled={loading}>
-                        {loading ? 'Processing...' : 'Download file'}
+                        {loading ? 'Processing...' : 'Load File'}
                     </button>
                 </div>
             )}

@@ -34,7 +34,7 @@ const Sidebar = () => {
     <div className='sideBar grid'>
       <div className="logoDiv flex">
         <img src={logo2} alt="Logo" />
-        <h3>SmartSale AI</h3>
+        <h3 className="ss-logo">SmartSale AI</h3>
       </div>
 
       <div className="menuDiv">

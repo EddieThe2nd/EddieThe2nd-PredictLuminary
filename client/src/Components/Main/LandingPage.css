@@ -1,20 +1,17 @@
-
 /* Reset basic styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    
 }
 
 /* Full-page setup */
-/* body, html {
+body, html {
     height: 100%;
     overflow: hidden;
-    background-image: ;
     color: white;
-} */
+}
 
 /* Main container for the landing page */
 .landing-page {
@@ -24,16 +21,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center,#18303e, #0b0c10);
+    background: radial-gradient(circle at center, #18303e, #0b0c10);
     overflow: hidden;
-    border-radius: 0px; /* Soft rounded corners for depth */
+    border-radius: 0;
     color: white;
-    
-    /* Adding depth with shadows */
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.5), /* Outer shadow for depth */
-        inset 0 0 30px rgba(255, 255, 255, 0.1), /* Inner glow for a folded look */
-        inset 0 0 60px rgba(0, 0, 0, 0.5); /* Darker inner shadow for depth */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1), inset 0 0 60px rgba(0, 0, 0, 0.5);
 }
 
 /* Header section */
@@ -47,14 +39,9 @@
     height: 100px;
     background: linear-gradient(to bottom, #18303e 0%, rgba(24, 48, 62, 0.8) 50%, rgba(11, 12, 16, 0.9) 100%);
     color: white;
-    z-index: 10; /* Ensure header stays above other elements */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3); /* Enhanced 3D shadow */
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-
-
-
-
-
 
 /* Logo */
 .logo {
@@ -62,7 +49,6 @@
     font-weight: bold;
     color: #31a2f2;
     letter-spacing: 4px;
-    text-transform: unset;
     padding-top: 10px;
     padding-bottom: 20px;
 }
@@ -79,46 +65,46 @@
     transition: background 0.3s ease;
 }
 
-
 /* Hero Section */
 .hero-section {
     text-align: center;
+    position: relative;
+    right: 10px;
     z-index: 2;
     color: #eaeaea;
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2vw;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
+    letter-spacing: 0.5vw;
+    margin-bottom: 2vh;
     transition: transform 0.3s ease;
+    color: white;
 }
 
 .hero-description {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    color: #cccccc;
+    font-size: 1vw;
+    margin-bottom: 5vh;
+    color: #fbfcfe;
 }
 
 .cta-button {
-    padding: 15px 65px;
+    padding: 6px 3vw;
     background-color: #ff7315;
     color: white;
     border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    width: 60px;
-    font-weight: bold;
+    border-radius: 60px;
+    font-size: 1.5vw;
+    font-weight: 900;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-  
 }
 
 .cta-button:hover {
     background-color: #31a2f2;
+    color:white;
     transform: scale(1.05);
-    color: white;
 }
 
 /* Floating elements for dynamic interaction */
@@ -137,54 +123,53 @@
     border-radius: 50%;
     background: rgba(0, 162, 255, 0.15);
     box-shadow: 0 0 30px rgba(0, 162, 255, 0.7);
-    transition: transform 0.1s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .element-1 {
-    width: 120px;
-    height: 120px;
-    top: 15%;
-    left: 40%;
+    width: 6vw;
+    height: 6vw;
+    top: 23%;
+    left: 55%;
 }
 
 .element-2 {
-    width: 200px;
-    height: 200px;
+    width: 8vw;
+    height: 8vw;
     top: 20%;
     left: 80%;
 }
 
 .element-3 {
-    width: 100px;
-    height: 100px;
-    top: 60%;
+    width: 6vw;
+    height: 6vw;
+    top: 50%;
     left: 20%;
 }
 
 .element-4 {
-    width: 150px;
-    height: 150px;
+    width: 6vw;
+    height: 6vw;
     top: 20%;
-    left: 10%;
+    left: 15%;
 }
 
 .element-5 {
-    width: 250px;
-    height: 250px;
+    width: 8vw;
+    height: 8vw;
     top: 60%;
     left: 65%;
 }
 
 /* Make sure icons are centered */
 .floating-element i {
-    color: #fff; /* Change color if needed */
-    font-size: 3rem; /* Adjust size */
+    color: #fff;
+    font-size: 3rem;
 }
 
-/* Floating animation (optional if you want a subtle movement) */
+/* Floating animation */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -194,31 +179,35 @@
     }
 }
 
-/* Hover effects to follow the mouse */
+/* Hover effects */
 .hero-section:hover .hero-title {
     transform: translateY(-10px);
 }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
+    .landing-header {
+        padding: 10px 30px;
+    }
+
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 6vw;
     }
 
     .hero-description {
-        font-size: 1.2rem;
+        font-size: 4vw;
     }
 
     .cta-button {
-        font-size: 1rem;
+        font-size: 3vw;
+        padding: 10px 15vw;
     }
 
     .logo {
-        font-size: 1.5rem;
-        align-items: center;
+        font-size: 3vw;
     }
 
     .get-started-button {
-        font-size: 0.9rem;
+        font-size: 2vw;
     }
 }

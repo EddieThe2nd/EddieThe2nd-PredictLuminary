@@ -1,8 +1,14 @@
 /* top.css */
 .topSection {
-     background: radial-gradient(circle at center,#18303e, #0b0c10);
+   background-color: transparent;
     padding: 1.5rem;
     color: #fff;
+    position: relative;
+    left: 120px;
+    
+    
+
+
 }
 
 .headerSection {
@@ -11,14 +17,23 @@
     align-items: center;
 }
 
-.title h1 {
+.welcome-message {
     font-size: 2rem;
     font-weight: 700;
+    color:white;
+    position: relative;
+    left: 450px;
+    
+}
+.conv-rate{
+    color: #37506f  ;
 }
 
 .title p {
     font-size: 1rem;
     color: #a4a6b3;
+    position: relative;
+    left: 450px;
 }
 
 .searchBar {
@@ -115,6 +130,12 @@
 .textDiv h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.notif-icon{
+    font-size: 80px;
+    position: relative;
+    right: 380px;
 }
 
 .textDiv .flex {

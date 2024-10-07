@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../ForgotPassword/ResetPassword.css';
 
 const ResetPassword = () => {
     const location = useLocation();
@@ -52,7 +53,7 @@ const ResetPassword = () => {
     return (
         <div id="reset-password-container">
             <div id="reset-password-form">
-                <h2>Reset Password</h2>
+                <h2 className="password-reset">Reset Password</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Entity Number:
                         <input
@@ -77,7 +78,7 @@ const ResetPassword = () => {
                             required
                         />
                     </label>
-                    <button type="submit">Reset Password</button>
+                    <button  type="submit">Reset Password</button>
                     {error && <p id="error-message">{error}</p>}
                     {message && <p id="success-message">{message}</p>}
                 </form>

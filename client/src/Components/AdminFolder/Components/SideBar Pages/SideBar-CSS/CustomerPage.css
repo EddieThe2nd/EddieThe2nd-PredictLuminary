@@ -3,7 +3,7 @@
     background: url('../analytics.jpg') no-repeat center center fixed;
     background-size: cover;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     padding: 20px;
     color: #fff; /* Text color for better visibility on background */
   }
@@ -14,10 +14,19 @@
   }
   
   .customers-page .chart-container {
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay for better chart visibility */
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 600px;
+    background: rgba(15, 14, 14, 0.902); /* Dark overlay for better chart visibility */
+    border-radius: 20px;
+    padding: 150px;
+    width: 100vh;
+    height: 95vh;
+   
     margin: 0 auto;
+  }
+
+  .cust-title{
+    position: relative;
+    bottom: 150px;
+    font-weight: 900;
+
   }
   

@@ -27,13 +27,13 @@
 
 /* Subscription Plan */
 .subscription-plan {
-    background:#687b92 ;
+    background:#37506fac  ;
     backdrop-filter: blur(20px);
     padding: 25px;
     margin: 15px;
     width: 300px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(164, 200, 211, 0.1);
+    box-shadow: 0 4px 15px rgba(1, 10, 13, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
     position: relative;
@@ -73,6 +73,8 @@
 }
 .plan-name{
     margin-bottom: 25px;
+    color: #18303e;
+    font-weight: 900;
 }
 
 /* Subscription Plan Title */

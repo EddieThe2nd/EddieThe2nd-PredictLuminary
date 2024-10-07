@@ -6,7 +6,7 @@
   border-radius: 8px; /* Rounded corners for the table */
   overflow: hidden; /* Prevent overflow of rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Table shadow */
-  background-color: transparent;
+  font-size: large;
   
 }
 
@@ -24,10 +24,16 @@
 }
 
 .registered-companies-table th {
-  background: linear-gradient(to right, rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8)); /* Semi-transparent gradient for header */
+  background: linear-gradient(to right, #2d6293,#dbe7f1); /* Semi-transparent gradient for header */
   color: white; /* Header text color */
   font-weight: bold; /* Bold text for headers */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for header */
+  border-radius: 10px;
+}
+
+.registered-title{
+  position: relative;
+  left: 650px;
 }
 
 .dropdown-content {

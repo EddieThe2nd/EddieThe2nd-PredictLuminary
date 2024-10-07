@@ -1,18 +1,31 @@
 .HomeContainer {
-    margin-top: 70px;
-    padding: 0;
-    /* background-color: #9BBEbA; */
-    position: absolute;
-    top: 110px;
-   right: 200px;
-  
-    width: 79%;
-    height: 85%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-   
-}
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    
+  }
+
+.graphics-image {  
+    position: relative;  
+    top: 180px;
+    left: 100px;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 60px; /* Softens corners for a smoother look */
+    box-shadow: 0 4px 90px rgba(1, 4, 8, 0.2); /* Adds depth */
+  
+  } 
+  
+  .graphics-image:hover {
+    transform: scale(0.1s ease-in-out)  translateY(-15px); /* Slight rotation and upward movement */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Increased shadow depth */
+  }
+  
 
 /* Control the left side */
 .LeftSide .logo_img{
@@ -26,26 +39,14 @@
 
 /* Control the right side */
 .RightSide {
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    left: 900px;
-    background-color:;
+    flex: 1;
+  padding: 2vw;
+  max-width: 1200px; /* Adjust based on your content */
+  width: 100%;
+
 }
 
-/* Logo image styles */
-/* .logo_img {
-    height: 520px;
-    width: 100px;
-    border-radius: 0 0 5px 0;
-}
 
-.logo_img2 {
-    height: 250px;
-    width: 250px;
-    justify-self: center;
-    border-radius: 20px;
-} */
 
 /* Button container */
 .btnContainer {
@@ -53,21 +54,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 10px;
     width: 100%;
 }
 
 /* Header text style */
 .h1_letsGetStarted {
-    font-size: 45px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 290px; /* Added margin to separate from buttons */
-    width: 450px;
-    color: #073763;
-    text-align: center;
-    margin-bottom: 50px;
 
-    /* New Styles */
+    font-size: 2.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 490px;
+    text-align: center;
+    margin-bottom: 45px;
+    position: relative;
+    bottom: 230px;
+    left: 100px;
     font-weight: 600; /* Slightly bolder for emphasis */
     letter-spacing: 1px; /* Add space between letters for elegance */
     line-height: 1.3; /* Improves readability */
@@ -87,14 +88,17 @@
 /* Add file button style */
 .addFile_btn {
     height: 75px;
-    width: 700px;
+    width: 500px;
     border-style: none;
     background-color:#073763;
-    border-radius: 10px;
+    border-radius: 40px;
     color: white;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px; /* Added margin to separate from payment button */
+    margin-top:140px; /* Added margin to separate from payment button */
+    margin-left: 130px;
+    position: relative;
+    right: 40px;
 }
 
 /* Add file button hover effect */
@@ -129,5 +133,26 @@
 }
 
 .subscriptionStatus{
-    color: grey;
+    position: relative;
+    top: 130px;
+    margin-left: 110px;
+    font-size: 27px;  
+    color: rgb(123, 121, 121);
+    font-weight: 600;
+    
 }
+
+
+@media screen and (min-width: 1600px) {
+    .HomeContainer {
+      padding: 40px; /* Add more padding for larger screens */
+    }
+  
+    .h1_letsGetStarted {
+      font-size: 3rem; /* Scale the text size for large screens */
+    }
+  
+    .graphics-image {
+      max-width: 60%; /* Adjust image size for large screens */
+    }
+  }

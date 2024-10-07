@@ -5,12 +5,13 @@
     top: 155px;
     right: 0; /* Adjust to 0 for full width */
     left: 10; /* Adjust to 0 for full width */
-    width: 80%; /* Set to full width */
+    width: 84%; /* Set to full width */
     height: 80%;
     display: flex;
     flex-direction: column; /* Ensure content stacks vertically */
     align-items: stretch; /* Allow children to stretch to container width */
     overflow: auto; /* Enable scrolling if content overflows */
+    background-color: #dbe7f1;
 }
 
 /* Heading style */
@@ -105,13 +106,13 @@ input[type="email"]:disabled {
     background-color: #073763; 
     color: white;
     border: none;
-    padding: 15px 45px;
+    padding: 20px 75px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 20px;   
     transition: background-color 0.3s;
     position: relative;
-    left: 10px;
+    left: 600px;
     top: 170px;
 }
 
@@ -121,7 +122,12 @@ input[type="email"]:disabled {
 }
 
 .loading-btn:hover:not(:disabled) {
-    background-color: rgb(162, 161, 161);
+    background-color: #687b92;
+}
+.selected-filebtn{
+    font-size:xx-large;
+    font-weight: 400;
+   
 }
 
 /* Table styling */
@@ -136,6 +142,7 @@ table, th, td {
     border: 1px solid #111112;
     border-radius: 10px;
     background-color: transparent;
+    color:#18303e;
 }
 
 th, td {

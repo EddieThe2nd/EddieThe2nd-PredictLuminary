@@ -30,7 +30,7 @@ const RegisteredCompanies = () => {
     return (
         <div className="table-container">
         <div className="registered-companies-container">
-            <h2>Registered Companies</h2>
+            <h2 className="registered-title">Registered Companies</h2>
             <table className="registered-companies-table">
                 <thead>
                     <tr>

@@ -48,7 +48,7 @@ function Mail() {
       <form ref={form} onSubmit={sendEmail}>
         <label>Entity Number</label>
         <input type="text" name="user_name" required />
-        <label>Enter your email</label>
+        <label >Enter your email</label>
         <input type="email" name="user_email" required />
         <label>Message</label>
         <textarea name="message" required />

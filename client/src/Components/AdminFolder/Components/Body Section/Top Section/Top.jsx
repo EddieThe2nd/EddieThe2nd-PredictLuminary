@@ -14,14 +14,14 @@ const Top = () => {
     <div className='topSection'>
       <div className="headerSection flex">
         <div className="title">
-          <h1>Welcome to Smart Sale AI</h1>
+          <h1 className="welcome-message">Admin Dashboard</h1>
           <p>Hello Admin, Welcome back!</p>
         </div>
        
        
 
         <div className="adminDiv flex">
-          <IoNotificationsOutline className='icon' onClick={HandleClick} style={{ cursor: 'pointer' }} />
+          <IoNotificationsOutline className='notif-icon' onClick={HandleClick} style={{ cursor: 'pointer' }} />
         </div>
       </div>
 

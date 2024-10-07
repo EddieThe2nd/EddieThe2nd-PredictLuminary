@@ -94,8 +94,8 @@ const Register = () => {
     return (
         <div className="register-container">
             <div className="top-bar">
-                <h2 className="top-bar-title">Smart Sale AI</h2>
-                <button className="back-button" onClick={handleLoginClick}>Login</button>
+                <h2 className="top-bar-title">SmartSale AI</h2>
+                <button className="back-button" onClick={handleLoginClick}>Back to login</button>
             </div>
             <div className="register-card">
                 <h1 className="register-title">Register</h1>
@@ -113,7 +113,7 @@ const Register = () => {
                         className="register-input-field"
                         placeholder="Email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}r
                         required
                     />
                     <input

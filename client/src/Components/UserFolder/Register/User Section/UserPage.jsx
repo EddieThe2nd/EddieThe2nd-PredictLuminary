@@ -3,7 +3,6 @@ import './UserPage.css'; // External CSS for styling
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import logo from '../../../../LoginAssets/transheadlog.png';
-import sales from '../../../../LoginAssets/salesGraphics.jpg';
 
 // Import pages
 import Dashboard from './Pages/Dashboard';
@@ -25,7 +24,7 @@ const UserPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="user-container">
       <aside className="sidebar">
         <img className='userPage-logo' src={logo} alt="Example Image" />
         <p className='logo-name'>SMART SALE AI</p>
@@ -62,16 +61,11 @@ const UserPage = () => {
           {location.pathname === '/user-page' && (
             <div className="graphics-and-tips">
               <div className="graphics-container">
-                <img
-                  src={sales} 
-                  alt="AI and Sales"
-                  className="graphics-image" // Applying the CSS class
-                />
-                <h2 className="powered-title" >AI-Powered Sales Predictions</h2>
+                <h2 className="powered-title" >AI-Powered Vehicle Insurance Sales Predictions</h2>
                 <h5 className="tools">Utilize smart AI tools to analyze data and make efficient use of resources.</h5>
               </div>
               <div className="tips-container">
-                <h3>Quick Tips for File Uploads</h3>
+                <h3>QUICK TIPS FOR FILE UPLOAD</h3>
                 <ul>
                   <li>Ensure your file is formatted correctly (CSV, EXCEL).</li>
                   <li>Use the latest sales data for the best predictions.</li>

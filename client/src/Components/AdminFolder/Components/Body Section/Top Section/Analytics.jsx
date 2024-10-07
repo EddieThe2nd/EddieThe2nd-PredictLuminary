@@ -5,7 +5,7 @@ import './Analytics.css';
 
 const Analytics = () => {
     // Simulating data
-    const [conversionRate, setConversionRate] = useState(19.12);
+    const [conversionRate, setConversionRate] = useState(5.50);
     const [predictedPurchases, setPredictedPurchases] = useState([180, 210, 250, 280]); // Updated for 4 weeks
     const [selectedWidget, setSelectedWidget] = useState('');
 
@@ -18,7 +18,7 @@ const Analytics = () => {
 
     // Dummy Feature Importance data
     const featureImportanceData = {
-        labels: ['Credit Score', 'Driving History', 'Vehicle Age', 'Annual Income', 'Vehicle Type'],
+        labels: ['Province', 'Marital Status', 'Gender', 'Annual Income', 'Vehicle Type'],
         datasets: [{
             label: 'Feature Importance',
             backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
@@ -79,7 +79,7 @@ const Analytics = () => {
     return (
         <div className="analytics-container">
                 <div className="customization-menu">
-                <select onChange={handleWidgetSelect} value={selectedWidget}>
+                <select className="single-widget-display" onChange={handleWidgetSelect} value={selectedWidget}>
                     <option value="">Select a Widget</option>
                     <option value="conversionWidget">Conversion Rate</option>
                     <option value="predictionWidget">Predicted Purchases</option>
@@ -90,10 +90,10 @@ const Analytics = () => {
 
             {/* Full-Screen Widget */}
             {selectedWidget && (
-                <div className="widget full-screen">
+                <div className="widget-full full-screen">
                     {selectedWidget === 'conversionWidget' && (
                         <div className="conversion-widget">
-                            <h3>Conversion Rate</h3>
+                            <h3 className="convers-title">Conversion Rate</h3>
                             <p>{conversionRate}% of users predicted likely to purchase actually bought insurance.</p>
                         </div>
                     )}
@@ -156,7 +156,7 @@ const Analytics = () => {
                             <p>{modelAlert}</p>
                         </div>
                     )}
-                    <button className="reset-button" onClick={resetLayout}>Back to 2x2 Layout</button>
+                    <button className="reset-button" onClick={resetLayout}>Back to full view</button>
                 </div>
             )}
 

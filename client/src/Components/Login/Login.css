@@ -5,101 +5,109 @@
   align-items: center;
   background-image: url('../../LoginAssets/signInback.gif');
   background-repeat: no-repeat;
-  image-rendering: optimizeQuality;
   background-size: cover;
-  box-shadow: inset 0 0 15px rgba(6, 47, 108, 0.5); /* Shadow on the background image edges */
+  image-rendering: optimizeQuality;
+  box-shadow: inset 0 0 15px rgba(6, 47, 108, 0.5); /* Edge shadow for depth */
 }
 
+/* Container for sign-in content */
 .signin-container {
   display: flex;
   flex-direction: row;
   height: 80vh;
   width: 70vw;
   background-color: transparent;
-  border-radius: 30px; /* Rounded corners */
-  box-shadow: 0 10px 30px rgba(13, 65, 177, 0.3), /* Original shadow */
-              0 15px 35px rgba(13, 54, 95, 0.15); /* Additional shadow for more depth */
-  transform: translateY(-20px); /* Move the sections up slightly */
-  overflow: hidden; /* Ensure rounded corners are applied properly */
-  margin-bottom: 50px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(13, 65, 177, 0.3),
+              0 15px 35px rgba(13, 54, 95, 0.15);
+  transform: translateY(-20px); /* Lifted appearance */
+  overflow: hidden;
+  margin-bottom: 48px;
 }
 
+/* Left section for image */
 .left-section {
-  width: 50%; /* Set width to 50% */
+  width: 50%;
   display: flex;
+  max-width: 1900px; /* Limit maximum width */
+  height: 100%; /* Ensure it takes full height */
   justify-content: center;
   align-items: center;
+  position: relative;
   padding: 0;
-  position: relative; /* Required for overlay */
 }
 
 .left-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  mask-image: linear-gradient(to right, rgba(102, 219, 255, 0.954) 70%, transparent 195%);
 }
 
+/* Gradient overlay for the left section */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, 
-    rgba(0, 0, 0, 0.7) 0%, 
-    rgba(0, 0, 0, 0.5) 25%, 
-    rgba(0, 0, 0, 0.3) 50%, 
-    rgba(0, 0, 0, 0.1) 75%, 
+  background: linear-gradient(to right,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
     rgba(0, 0, 0, 0.3) 100%);
-  z-index: 1; /* Ensure overlay is above the image */
+  z-index: 1; /* Keeps it above the image */
 }
 
+/* Right section with form */
 .right-section {
-  width: 50%; /* Set width to 50% */
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px;
   position: relative;
-  z-index: 2; /* Ensure content is above overlay */
+  z-index: 2;
 }
 
 .signin-box {
-  background-color:transparent;
+  background-color: transparent;
   padding: 60px;
-  border-radius: 50px; /* Make the form oval */
-  box-shadow: 0 10px 30px rgba(25, 39, 54, 0.3); /* 3D shadow effect */
-  width: 560px;
-  margin-bottom: 10px;
+  border-radius: 50px; /* Oval form */
+  box-shadow: 0 10px 30px rgba(25, 39, 54, 0.3);
+  width: 600px;
+  height: 600px;
+  margin-bottom: 1px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-clip: padding-box; /* Ensures background color is clipped within the shape */
-  position: relative; /* Ensures proper layout of content */
   z-index: 3;
 }
 
+/* Hover effect for signin-box */
 .signin-box:hover {
-  transform: translateY(-10px); /* Slight lift on hover */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+  transform: translateY(-10px); /* Slight hover lift */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.signin-box h2{
+/* Sign-in form text */
+.signin-box h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color:#073763; /* White text for contrast */
+  color: #073763;
   text-align: center;
-  
 }
 
+/* Paragraph styling */
 p {
   font-size: 1rem;
   margin-bottom: 30px;
-  color:#073763; /* Subtle text color */
+  color: #073763;
   text-align: center;
   font-weight: 500;
 }
 
 a {
-  color:  #f36a46;
+  color: #f36a46;
   font-weight: 600;
   text-decoration: none;
 }
@@ -108,70 +116,73 @@ a:hover {
   color: #ff5722;
 }
 
-
+/* Input fields */
 .input-group {
   margin-bottom: 30px;
   width: 100%;
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 .input-field {
   width: 100%;
-  padding: 15px;
+  padding: 20px;
   border: none;
   border-radius: 20px;
-  background-color: transparent; /* Darker input fields */
- font-size:medium;
-  box-shadow: inset 0 4px 8px rgba(5, 29, 44, 0.15); /* Inner shadow for depth */
+  background-color: transparent;
+  font-size: medium;
+  box-shadow: inset 0 4px 8px rgba(5, 29, 44, 0.15);
   transition: background-color 0.3s ease;
 }
 
-
-
+/* Sign-in button */
 .signin-button {
   width: 100%;
   padding: 15px;
   border: none;
-  border-radius:18px;
-  background-color:#687b92;
+  border-radius: 18px;
+  background-color: #687b92;
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px #37506f  ; /* 3D shadow effect */
+  box-shadow: 0 4px 8px #37506f;
 }
+
+/* Button hover effect */
 .signin-button:hover {
-  
-  background-color: #073763 !important; /* Make sure the color you want is applied */
+  background-color: #073763;
   transform: scale(1.00);
- }
+}
 
-
-
-
-
+/* Forgot password link */
 .forgot-password {
   margin-top: 20px;
   text-align: center;
   color: #f36a46;
   font-weight: bold;
-  
 }
-.sign-in-title{
+
+.sign-in-title {
   color: #073763;
   font-size: xx-large;
   text-align: center;
   margin-bottom: 10px;
 }
 
-h4{
+h4 {
   color: #073763;
   font-weight: 500;
 }
 
+/* Responsive design */
 @media screen and (max-width: 768px) {
   .signin-container {
     flex-direction: column;
+   
+  
+
   }
 
   .left-section, .right-section {
@@ -179,7 +190,12 @@ h4{
     padding: 20px;
   }
 
+  .left-image{
+    width:30%;
+  }
+
   .right-section {
     background:transparent;
   }
+  
 } 

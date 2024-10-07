@@ -22,7 +22,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 4, 11, 0.365); /* Dark semi-transparent overlay */
+    background: rgba(6, 6, 6, 0.248); /* Dark semi-transparent overlay */
     z-index: 1;
 }
 
@@ -31,7 +31,10 @@
    
     margin-bottom: 180px;
     width: 100%;
-    background-color: #08243565; /* Top bar background */
+    height: 110px;
+    position: relative;
+    bottom: 30px;
+    background-color: #02090e8f; /* Top bar background */
     padding: 20px 20px; /* Adjust padding as needed */
     display: flex; /* Flexbox for alignment */
     justify-content: space-between; /* Space between title and button */
@@ -40,19 +43,26 @@
 }
 
 .top-bar-title {
-    color: #ffffff;
+    color:#31a2f2;
     font-size: 24px;
     font-weight: 500;
     display: flex;
     float: left;
+    position: relative;
+    top: 30px;
 }
 
 /* Back button styling */
 .back-button {
-    background-color: #9bc0da; /* Transparent background */
+    background-color: #073763; /* Transparent background */
     color: #ffffff; /* White text */
     padding: 20px;
-    border-radius: 10px;
+    margin: 40px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+   
+    border-radius: 50px;
     border: none; /* No border */
     cursor: pointer; /* Pointer cursor */
     font-size: 18px; /* Font size */
@@ -69,11 +79,13 @@
     position: relative;
     right: 400px;
     width: 650px;
-    background: rgba(156, 169, 181, 0.568); /* Slight transparency */
+    background: white; /* Slight transparency */
     border-radius: 80px;
     padding: 60px;
     z-index: 2;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.699); /* More pronounced shadow */
+   position: relative;
+   bottom: 50px;
 }
 
 /* Title style */
@@ -81,7 +93,7 @@
     text-align: center;
     font-size: 28px;
     margin-bottom: 25px;
-    color: #131212;
+    color:#18303e;
     font-weight: 600;
 }
 
@@ -91,26 +103,25 @@
     padding: 14px;
     margin-bottom: 30px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+   
     font-size: 16px;
-    background-color: #f9f9f928;
+    background-color:transparent;
+    color: #18303e;
+    font-weight: 600;
     transition: border-color 0.3s ease;
 }
 
+
 /* Input focus effect */
-.input-field:focus {
-    border-color: #464a4d;
-    outline: none;
-}
 
 /* Button style */
 .register-button {
     width: 100%;
     padding: 15px;
-    background-color: #0b1d2a;
+    background-color:#37506f  ;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 20px;
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -118,7 +129,7 @@
 
 /* Button hover effect */
 .register-button:hover {
-    background-color: #2091d4;
+    background-color:#073763;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 

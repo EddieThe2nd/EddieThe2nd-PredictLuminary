@@ -75,11 +75,12 @@ const OtpForm = () => {
     return (
         <div id="otp-form-container">
             <div id="otp-form">
-                <h2>Forgot Password</h2>
+                <h2 className="forgot-pass">Forgot Password</h2>
                 <form onSubmit={sendOtpEmail}>
-                    <label>Entity Number:
-                        <input
+                    <label className="entity-label">Entity Number:
+                        <input className="input-box"
                             type="text"
+                            placeholder='Entity Number'
                             value={entityNumber}
                             onChange={(e) => setEntityNumber(e.target.value)}
                             required
@@ -91,7 +92,7 @@ const OtpForm = () => {
                 {otpSent && (
                     <form onSubmit={verifyOtp}>
                         <label>OTP:
-                            <input
+                            <input 
                                 type="text"
                                 name="otp"
                                 value={otp}

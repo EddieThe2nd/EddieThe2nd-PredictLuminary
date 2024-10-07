@@ -30,13 +30,13 @@ const Activity = ({ entityNumber }) => {
 
   return (
     <div className="login-activity-container">
-      <h2>Recent Login Activity for {entityNumber}</h2>
+      <h2 className="recent-title">Recent Login Activity for {entityNumber}</h2>
       <table className="login-activity-table">
-        <thead>
+        <thead >
           <tr>
-            <th>ID</th>
-            <th>Entity Number</th>
-            <th>Login Time</th>
+            <th className="activity-title">ID</th>
+            <th className="activity-title">Entity Number</th>
+            <th className="activity-title">Login Time</th>
           </tr>
         </thead>
         <tbody>

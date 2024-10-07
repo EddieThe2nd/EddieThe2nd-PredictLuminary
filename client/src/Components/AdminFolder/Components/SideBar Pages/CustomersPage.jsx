@@ -51,8 +51,8 @@ const CustomersPage = () => {
         <p>{error}</p>
       ) : (
         <div className="chart-container">
-          <h2>Customers Overview</h2>
-          <DoughnutChartComponentWrapper data={data} />
+          <h2 className="cust-title">Customers Overview</h2>
+          < DoughnutChartComponentWrapper data={data} />
         </div>
       )}
     </div>
@@ -84,6 +84,7 @@ const prepareDoughnutChartData = (data) => {
   const counts = Object.values(dateMap);
 
   return {
+   
     chartData: {
       labels: labels,
       datasets: [
@@ -112,10 +113,14 @@ const prepareDoughnutChartData = (data) => {
       },
       layout: {
         padding: {
-          top: 20,
+          bottom:20,
+        },
+        padding: {
+          top:-40,
         }
       },
     },
+    
   };
 };
 

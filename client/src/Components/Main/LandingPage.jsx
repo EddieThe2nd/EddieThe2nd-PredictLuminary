@@ -31,12 +31,12 @@ const LandingPage = () => {
     <div className="landing-page">
       
       <div className="landing-header">
-        <div className="logo">SmartSaleAi</div>
+        <div className="logo">SmartSaleAI</div>
         
       </div>
 
       <div className="hero-section">
-        <h1 className="hero-title">Revolutionize Your Sales</h1>
+        <h1 className="hero-title">Revolutionize Your Insurance Sales</h1>
         <p className="hero-description">Maximize your potential with intelligent, data-driven sales insights and prediction.</p>
         <a href="/login" className="cta-button">Get Started</a>
       </div>
